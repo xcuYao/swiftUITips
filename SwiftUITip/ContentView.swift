@@ -8,9 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @State var selection: Int = 4
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            TabView(selection: $selection) {
+                SystemElement()
+                    .tabItem({ Text("系统组件") })
+                    .tag(0)
+                Tab2()
+                    .tabItem({ Text("状态管理") })
+                    .tag(1)
+                Tab3()
+                    .tabItem({ Text("三方组件") })
+                    .tag(2)
+            }
+        }
     }
 }
 
