@@ -12,9 +12,9 @@ struct SystemElement: View {
     @State var select = 0
     
     //sections 基础组件 布局组件 功能组件 事件手势 动画图形 新特性 其他
-    let basics = ["Text", "Button", "Image", "Toggle", "Slider", "TextField", "Picker", "DataPicker", "SegmentedControl"]
-    let layout = ["HStack", "VStack", "ZStack", "List", "ScrollView", "Table", "Form"]
-    let function = ["sheet", "NavigationView", "TabView"]
+    let basics = ["Text", "Button", "Image", "Toggle", "Label", "Slider", "TextField", "Picker", "DataPicker", "SegmentedControl", "ProgressView", "Stepper"]
+    let layout = ["HStack", "VStack", "ZStack", "LazyHStack", "LazyVStack", "List", "ScrollView", "Table", "Form", "LazyHGrid", "LazyVGrid", "Spacer", "Divider"]
+    let function = ["sheet", "NavigationView", "TabView", "Map", "Picker", "ActionSheet"]
     let gesture = ["TapGesture", "LongPressGesture", "DragGesture", "Alert", "ActionSheet", "Popover"]
     let animation = ["", "", ""]
     let feature = ["ViewBuilder"]

@@ -21,6 +21,10 @@ struct BasicsElement: View {
             ImageExample()
         case "Toggle":
             ToggleExample()
+        case "Label":
+            LabelExample()
+        case "TextField":
+            TextFieldExample()
         default:
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         }
@@ -30,7 +34,7 @@ struct BasicsElement: View {
 private struct TextExample: View {
 
     @State var actionText = "点我变化"
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("SwiftUI 从入门到放弃")
@@ -44,10 +48,10 @@ private struct TextExample: View {
                 .font(Font.custom("Herculanum", size: 12))
                 .padding(10)
             Divider()
-            HStack(spacing: 10){
+            HStack(spacing: 10) {
                 Text("SwiftUI").foregroundColor(Color.red) +
-                Text(" Is").foregroundColor(Color.green) +
-                Text(" Good").foregroundColor(Color.blue)
+                    Text(" Is").foregroundColor(Color.green) +
+                    Text(" Good").foregroundColor(Color.blue)
                 Text("UnderLine").underline(true, color: .black)
                 Text("google无法访问").foregroundColor(Color.blue).strikethrough(true, color: .black)
                 Text("Bold").fontWeight(.bold)
@@ -81,7 +85,7 @@ private struct TextExample: View {
                     Text("***[this](https://www.baidu.com) ~is~ `Cool`***")
                 }.padding(10)
             }.padding(10)
-            
+
             Spacer()
         }.background(Color.white)
             .cornerRadius(6)
@@ -94,7 +98,7 @@ private struct TextExample: View {
 
 private struct ButtonExample: View {
     var body: some View {
-        VStack{
+        VStack {
             // 初始化方式1
             Button(action: {
                 print("click 1")
@@ -102,11 +106,11 @@ private struct ButtonExample: View {
                 Text("JustButton")
             }
             // 初始化方式2
-            Button("JustButton"){
+            Button("JustButton") {
                 print("click 2")
             }
             //
-            Button(action: {}) {
+            Button(action: { }) {
                 Text("ColorButton1").foregroundColor(.white)
             }.padding(10)
                 .buttonStyle(.plain)
@@ -127,7 +131,7 @@ private struct ImageExample: View {
                 .frame(width: 120, height: 120)
                 .background(Color.mint)
                 .border(.yellow, width: 3)
-            VStack{
+            VStack {
                 Image("swiftui")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -135,7 +139,7 @@ private struct ImageExample: View {
                     .background(Color.brown)
                 Text("120*40 scaledToFit")
             }
-            VStack{
+            VStack {
                 Image("swiftui")
                     .resizable()
                     .aspectRatio(20, contentMode: .fill)
@@ -143,7 +147,7 @@ private struct ImageExample: View {
                     .fixedSize(horizontal: true, vertical: false)
                 Text("120*40 scaledToFill")
             }
-            VStack{
+            VStack {
                 //  此处查看所有系统图片
                 // https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/
                 Image(systemName: "bitcoinsign.square.fill")
@@ -160,20 +164,161 @@ private struct ImageExample: View {
 private struct ToggleExample: View {
 
     @State var isOn = true
-    
+
     var body: some View {
         Form {
-            Section{
-                Toggle(isOn: $isOn) {
-                    Text("Toggle Test")
+            Section {
+                HStack {
+                    Text("Default Toggle:")
+                    Toggle(isOn: $isOn) {
+                        Text("Toggle Test")
+                    }
+                }
+            }
+            Section {
+                HStack {
+                    Text("Custom Toggle:")
+                    Toggle("Toggle Me", isOn: $isOn)
+                        .toggleStyle(CustomToggleStyle())
                 }
             }
         }
     }
+
+    struct CustomToggleStyle: ToggleStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            Button(action: {
+                configuration.isOn.toggle()
+            }) {
+                Label(title: {
+                    configuration.label
+                }, icon: {
+                        Image(systemName: configuration.isOn ? "tray.fill" : "tray")
+                    })
+            }.buttonStyle(.plain)
+        }
+    }
+
 }
+
+private struct LabelExample: View {
+
+    var body: some View {
+       Text("Label")
+    }
+}
+
+private struct TextFieldExample: View {
+    @State var value: String = ""
+    @State private var label = "Currency (USD)"
+    @State private var myMoney: Double? = 300.0
+    
+    // todo: macos上 框的背景 去不掉。。。
+    var body: some View {
+        VStack(alignment: .leading) {
+            TextField("titleKey", text: $value)
+            TextField("titleKey", text: $value, prompt: Text("prompt"))
+                .background(RoundedRectangle(cornerRadius: 6).stroke(Color.blue))
+                .frame(width: 100)
+            TextField("UserName", text: $value)
+                .background {
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.white.opacity(0.2))
+                        .padding(.leading, 20)
+                }.padding(.top)
+                .padding(.bottom)
+                .background(VisualEffectView())
+            HStack {
+                Image("swiftui").resizable().frame(width: 20, height: 20)
+                TextField("圆角样式", text: $value)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            }
+            HStack{
+                TextField("自定义样式", text: $value)
+                    .textFieldStyle(OvalTextFieldStyle())
+            }
+            TextField(label, value: $myMoney, format: .currency(code: "USD"))
+                .onChange(of: myMoney) { newValue in
+                    print("handler change \(newValue ?? 0.0)")
+                }
+            HStack {
+                Image(systemName: "magnifyingglass")
+                TextField("Search...", text: $value)
+            }.modifier(customViewModifier(roundedCornes: 6, startColor: .orange, endColor: .purple, textColor: .white))
+            HStack {
+                TextField("Search...", text: $value).extensionTextFieldView(roundedCornes: 6, startColor: .white, endColor: .purple)
+            }
+            Spacer()
+        }.padding(10)
+    }
+    
+    struct VisualEffectView: NSViewRepresentable {
+        func makeNSView(context: Context) -> NSVisualEffectView {
+            let view = NSVisualEffectView()
+            view.blendingMode = .behindWindow    // << important !!
+            view.isEmphasized = true
+            view.material = .titlebar
+            return view
+        }
+
+        func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
+        }
+    }
+    
+    struct OvalTextFieldStyle: TextFieldStyle {
+        func _body(configuration: TextField<Self._Label>) -> some View {
+                configuration
+                    .padding(10)
+                    .background(LinearGradient(gradient: Gradient(colors: [Color.accentColor, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .cornerRadius(20)
+                    .shadow(color: .gray, radius: 10)
+            }
+    }
+    
+    struct customViewModifier: ViewModifier {
+        var roundedCornes: CGFloat
+        var startColor: Color
+        var endColor: Color
+        var textColor: Color
+        
+        func body(content: Content) -> some View {
+            content
+                .padding()
+                .background(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                .cornerRadius(roundedCornes)
+                .padding(3)
+                .foregroundColor(textColor)
+                .overlay(RoundedRectangle(cornerRadius: roundedCornes)
+                            .stroke(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.5))
+                .font(.custom("Open Sans", size: 18))
+                
+                .shadow(radius: 10)
+        }
+    }
+}
+
+//swiftUI层面不支持 曲线救国 去掉高亮效果
+extension NSTextField {
+    open override var focusRingType: NSFocusRingType {
+        get { .none }
+        set { }
+    }
+}
+
+extension TextField {
+    func extensionTextFieldView(roundedCornes: CGFloat, startColor: Color,  endColor: Color) -> some View {
+        self
+            .padding()
+            .background(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing))
+            .cornerRadius(roundedCornes)
+            .shadow(color: .purple, radius: 10)
+    }
+}
+
 
 struct BasicsElement_Previews: PreviewProvider {
     static var previews: some View {
-        BasicsElement(name: "Toggle")
+        BasicsElement(name: "TextField")
     }
 }
