@@ -167,21 +167,24 @@ private struct ToggleExample: View {
 
     var body: some View {
         Form {
-            Section {
-                HStack {
-                    Text("Default Toggle:")
-                    Toggle(isOn: $isOn) {
-                        Text("Toggle Test")
+            VStack(alignment: .leading) {
+                Section {
+                    HStack {
+                        Text("Default Toggle:")
+                        Toggle(isOn: $isOn) {
+                            Text("Toggle Test")
+                        }
+                    }
+                }
+                Section {
+                    HStack {
+                        Text("Custom Toggle:")
+                        Toggle("Toggle Me", isOn: $isOn)
+                            .toggleStyle(CustomToggleStyle())
                     }
                 }
             }
-            Section {
-                HStack {
-                    Text("Custom Toggle:")
-                    Toggle("Toggle Me", isOn: $isOn)
-                        .toggleStyle(CustomToggleStyle())
-                }
-            }
+            Spacer()
         }
     }
 
@@ -204,7 +207,9 @@ private struct ToggleExample: View {
 private struct LabelExample: View {
 
     var body: some View {
-       Text("Label")
+        VStack {
+            Label("Text", image: "swiftui")
+        }
     }
 }
 
@@ -212,7 +217,7 @@ private struct TextFieldExample: View {
     @State var value: String = ""
     @State private var label = "Currency (USD)"
     @State private var myMoney: Double? = 300.0
-    
+
     // todo: macos上 框的背景 去不掉。。。
     var body: some View {
         VStack(alignment: .leading) {
@@ -222,10 +227,10 @@ private struct TextFieldExample: View {
                 .frame(width: 100)
             TextField("UserName", text: $value)
                 .background {
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.white.opacity(0.2))
-                        .padding(.leading, 20)
-                }.padding(.top)
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.white.opacity(0.2))
+                    .padding(.leading, 20)
+            }.padding(.top)
                 .padding(.bottom)
                 .background(VisualEffectView())
             HStack {
@@ -234,14 +239,14 @@ private struct TextFieldExample: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
             }
-            HStack{
+            HStack {
                 TextField("自定义样式", text: $value)
                     .textFieldStyle(OvalTextFieldStyle())
             }
             TextField(label, value: $myMoney, format: .currency(code: "USD"))
                 .onChange(of: myMoney) { newValue in
-                    print("handler change \(newValue ?? 0.0)")
-                }
+                print("handler change \(newValue ?? 0.0)")
+            }
             HStack {
                 Image(systemName: "magnifyingglass")
                 TextField("Search...", text: $value)
@@ -249,14 +254,18 @@ private struct TextFieldExample: View {
             HStack {
                 TextField("Search...", text: $value).extensionTextFieldView(roundedCornes: 6, startColor: .white, endColor: .purple)
             }
+            HStack {
+                Image(systemName: "magnifyingglass")
+                TextField("Search", text: $value)
+            }.underlineTextField()
             Spacer()
         }.padding(10)
     }
-    
+
     struct VisualEffectView: NSViewRepresentable {
         func makeNSView(context: Context) -> NSVisualEffectView {
             let view = NSVisualEffectView()
-            view.blendingMode = .behindWindow    // << important !!
+            view.blendingMode = .behindWindow // << important !!
             view.isEmphasized = true
             view.material = .titlebar
             return view
@@ -265,23 +274,23 @@ private struct TextFieldExample: View {
         func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
         }
     }
-    
+
     struct OvalTextFieldStyle: TextFieldStyle {
         func _body(configuration: TextField<Self._Label>) -> some View {
-                configuration
-                    .padding(10)
-                    .background(LinearGradient(gradient: Gradient(colors: [Color.accentColor, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                    .cornerRadius(20)
-                    .shadow(color: .gray, radius: 10)
-            }
+            configuration
+                .padding(10)
+                .background(LinearGradient(gradient: Gradient(colors: [Color.accentColor, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                .cornerRadius(20)
+                .shadow(color: .gray, radius: 10)
+        }
     }
-    
+
     struct customViewModifier: ViewModifier {
         var roundedCornes: CGFloat
         var startColor: Color
         var endColor: Color
         var textColor: Color
-        
+
         func body(content: Content) -> some View {
             content
                 .padding()
@@ -290,9 +299,9 @@ private struct TextFieldExample: View {
                 .padding(3)
                 .foregroundColor(textColor)
                 .overlay(RoundedRectangle(cornerRadius: roundedCornes)
-                            .stroke(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.5))
+                    .stroke(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.5))
                 .font(.custom("Open Sans", size: 18))
-                
+
                 .shadow(radius: 10)
         }
     }
@@ -307,7 +316,7 @@ extension NSTextField {
 }
 
 extension TextField {
-    func extensionTextFieldView(roundedCornes: CGFloat, startColor: Color,  endColor: Color) -> some View {
+    func extensionTextFieldView(roundedCornes: CGFloat, startColor: Color, endColor: Color) -> some View {
         self
             .padding()
             .background(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -316,9 +325,22 @@ extension TextField {
     }
 }
 
+extension Color {
+    static let darkPink = Color(red: 208 / 255, green: 45 / 255, blue: 208 / 255)
+}
+
+extension View {
+    func underlineTextField() -> some View {
+        self
+            .padding(.vertical, 10)
+            .overlay(Rectangle().frame(height: 2).padding(.top, 35))
+            .foregroundColor(.darkPink)
+            .padding(10)
+    }
+}
 
 struct BasicsElement_Previews: PreviewProvider {
     static var previews: some View {
-        BasicsElement(name: "TextField")
+        BasicsElement(name: "Label")
     }
 }
