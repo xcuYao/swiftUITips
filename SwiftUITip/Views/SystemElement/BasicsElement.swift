@@ -25,6 +25,14 @@ struct BasicsElement: View {
             LabelExample()
         case "TextField":
             TextFieldExample()
+        case "Slider":
+            SliderExample()
+        case "Picker":
+            PickerExample()
+        case "DatePicker":
+            DatePickerExample()
+        case "SegmentedControl":
+            SegmentedControlExample()
         default:
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         }
@@ -207,10 +215,60 @@ private struct ToggleExample: View {
 private struct LabelExample: View {
 
     var body: some View {
-        VStack {
-            Label("Text", image: "swiftui")
+        VStack(alignment: .leading, spacing: 10) {
+            Label("SwiftUI", image: "swiftui")
+            Label("剪贴", systemImage: "scissors")
+                .font(.largeTitle)
+                .foregroundColor(.blue)
+            Label(title: {
+                Text("剪贴")
+                    .font(.title)
+                    .fontWeight(.light)
+                    .foregroundColor(.green)
+            }, icon: {
+                Image(systemName: "scissors")
+                    .font(.largeTitle)
+                    .foregroundColor(.gray)
+            })
+            Label(title: {
+                Image(systemName: "scissors")
+                    .font(.largeTitle)
+                    .foregroundColor(.gray)
+            }, icon: {
+                Text("剪贴")
+                    .font(.title)
+                    .fontWeight(.light)
+                    .foregroundColor(.green)
+            })
+            Label("SwiftUI", image: "swiftui")
+                .labelStyle(IconOnlyLabelStyle())
+            Label("SwiftUI", image: "swiftui")
+                .labelStyle(TitleOnlyLabelStyle())
+            Label("SwiftUI", image: "swiftui")
+                .labelStyle(TitleAndIconLabelStyle())
+            Label("自定义Style", systemImage: "suit.heart.fill")
+                .labelStyle(MyLabelStyle(color: .red))
         }
     }
+    
+    struct MyLabelStyle: LabelStyle {
+        let color: Color
+        
+        func makeBody(configuration: Configuration) -> some View {
+            HStack {
+                configuration.icon
+                    .padding(10)
+                    .background(Circle().fill(color))
+                
+                configuration.title
+                    .padding(.trailing, 10)
+                    .lineLimit(1)
+            }
+            .padding(6)
+            .background(RoundedRectangle(cornerRadius: 10).stroke(color, lineWidth: 3))
+        }
+    }
+    
 }
 
 private struct TextFieldExample: View {
@@ -307,6 +365,115 @@ private struct TextFieldExample: View {
     }
 }
 
+private struct SliderExample: View {
+    
+    @State var value: Double = 5
+    var body: some View {
+        VStack{
+            VStack {
+                Text("Slider Value: \(value)")
+                Slider(value: $value, in: 0...10)
+                    .frame(width: 200, height: 20, alignment: .top)
+            }.padding(20)
+            Divider()
+            VStack{
+                Text("Step Value: \(value)")
+                Slider(value: $value, in: 0...10, step: 1.0) {
+                    Text("标题:")
+                } onEditingChanged: { bool in
+                    let str = bool ?"开始" :"结束"
+                    print("状态:\(str)")
+                }.frame(width: 300, height: 20, alignment: .leading)
+            }.padding(20)
+            Divider()
+            VStack {
+                Text("Max Min Value: \(value)")
+                Slider(value: $value, in: -100...100, label: {EmptyView()}, minimumValueLabel: {Text("-100")}, maximumValueLabel: { Text("100") })
+            }.padding(20)
+            Spacer(minLength: 20)
+        }
+    }
+}
+
+private struct PickerExample: View {
+    @State var selection = 0
+    
+    var devices = ["iPhone", "iPad", "Mac", "iWatch"]
+    @State var selectDevice = "iPhone"
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Picker(selection: $selection, content: {
+                Text("Value0").tag(0)
+                Text("Value1").tag(1)
+                Text("Value2").tag(2)
+            }, label: {
+                Text("Tag:\(selection)")
+            }).frame(width: 400, height: 40)
+            Picker(selection: $selectDevice, label: Text("Decice:\(selectDevice)")) {
+                ForEach(devices, id: \.self) { device in
+                    Text(device)
+                }
+            }.frame(width: 400, height: 40)
+                .pickerStyle(SegmentedPickerStyle())
+            Spacer()
+        }.padding(20)
+    }
+}
+
+private struct DatePickerExample: View {
+    @State var selection = Date()
+    let beginDate = Date()
+    var endDate = Date()
+    init() {
+        endDate = beginDate.addingTimeInterval(60 * 60 * 24)
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            VStack {
+                Text("\(selection)")
+                DatePicker("date", selection: $selection, in: beginDate...endDate, displayedComponents: .date)
+                    .frame(width: 300, height: 20)
+                DatePicker("hourAndMinute", selection: $selection, in: beginDate...endDate, displayedComponents: .hourAndMinute)
+                    .frame(width: 300, height: 20)
+            }.padding(20)
+            Divider()
+            HStack {
+                DatePicker(selection: $selection, label: {
+                    Image(systemName: "airplane")
+                    Text("compact Style")
+                }).frame(width: 400, height: 20)
+                    .datePickerStyle(.compact)
+            }
+            DatePicker(selection: $selection, label: {
+                Image(systemName: "airplane")
+                Text("field Style")
+            }).frame(width: 400, height: 20)
+                .datePickerStyle(.field)
+            DatePicker(selection: $selection, label: {
+                Image(systemName: "airplane")
+                Text("graphical Style")
+            }).frame(width: 400, height: 200)
+                .datePickerStyle(.graphical)
+            DatePicker(selection: $selection, label: {
+                Image(systemName: "airplane")
+                Text("graphical Style")
+            }).frame(width: 400, height: 20)
+                .datePickerStyle(.stepperField)
+            Divider()
+            Spacer()
+        }
+        
+    }
+}
+
+private struct SegmentedControlExample: View {
+    var body: some View {
+        Text("SegmentedControl")
+    }
+}
+
 //swiftUI层面不支持 曲线救国 去掉高亮效果
 extension NSTextField {
     open override var focusRingType: NSFocusRingType {
@@ -341,6 +508,10 @@ extension View {
 
 struct BasicsElement_Previews: PreviewProvider {
     static var previews: some View {
-        BasicsElement(name: "Label")
+        // https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
+        BasicsElement(name: "DatePicker")
+//            .environment(\.locale, Locale(identifier: "ja_JP"))
+            .environment(\.locale, Locale(identifier: "zh-CN"))
+        
     }
 }
