@@ -15,7 +15,7 @@ struct SystemElement: View {
     let basics = ["Text", "Button", "Image", "Toggle", "Label", "Slider", "TextField", "Picker", "DatePicker", "SegmentedControl", "ProgressView", "Stepper"]
     let layout = ["HStack", "VStack", "ZStack", "LazyHStack", "LazyVStack", "List", "ScrollView", "Table", "Form", "LazyHGrid", "LazyVGrid", "Spacer", "Divider"]
     let function = ["sheet", "NavigationView", "TabView", "Map", "Picker", "ActionSheet"]
-    let gesture = ["TapGesture", "LongPressGesture", "DragGesture", "Alert", "ActionSheet", "Popover"]
+    let gesture = ["TapGesture", "LongPressGesture", "DragGesture", "Alert", "ActionSheet", "Popover", "Timer"]
     let animation = ["", "", ""]
     let feature = ["ViewBuilder"]
     let other = ["color", "font", "Spacer", "Divider"]

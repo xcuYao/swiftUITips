@@ -33,6 +33,10 @@ struct BasicsElement: View {
             DatePickerExample()
         case "SegmentedControl":
             SegmentedControlExample()
+        case "ProgressView":
+            ProgressViewExample()
+        case "Stepper":
+            StepperExample()
         default:
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         }
@@ -469,8 +473,88 @@ private struct DatePickerExample: View {
 }
 
 private struct SegmentedControlExample: View {
+    
+    @State var selection:Int = 0
+
     var body: some View {
-        Text("SegmentedControl")
+        Picker("", selection: self.$selection){
+            Text("iPhone").tag(0)
+            Text("iPad").tag(1)
+            Text("iWatch").tag(2)
+        }.pickerStyle(SegmentedPickerStyle()) 
+    }
+}
+
+private struct ProgressViewExample: View {
+    @State private var progress = 0.5
+    @State private var donwloadDes = "下载中..."
+    @State private var downloadProgress:Double = 0.0
+    private let total = 100.0
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            ProgressView("loading")
+                .progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
+            VStack(alignment: .leading) {
+                ProgressView("value:\(progress)", value: progress, total: 1)
+                    .accentColor(.red)
+                    .foregroundColor(.yellow)
+                HStack{
+                    Button("More", action: { progress += 0.05 })
+                    Button("Less", action: { progress -= 0.05 })
+                }
+            }
+            VStack {
+                ProgressView("\(progress)", value: progress, total: 1)
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
+            }
+            HStack {
+                Spacer(minLength: 40)
+                let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+                ProgressView(donwloadDes, value: downloadProgress, total: total)
+                    .onReceive(timer, perform: { _ in
+                        if (downloadProgress < total) {
+                            downloadProgress += 2.0
+                            if (downloadProgress >= total) {
+                                downloadProgress = total
+                                donwloadDes = "下载完毕"
+                            }
+                        }
+                    })
+                Spacer(minLength: 40)
+            }
+            Spacer()
+        }.padding(20)
+    }
+}
+
+private struct StepperExample: View {
+    @State var value = 20
+    @State var value2 = 100
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            HStack {
+                Stepper(value: $value, in: 0...100, label: {
+                    Text("value: \(value)")
+                }, onEditingChanged: { changed in
+                    if changed {
+                        print("from: \(self.value)")
+                    } else {
+                        print("to: \(self.value)")
+                    }
+                })
+                Spacer()
+            }
+            HStack {
+                Stepper(label: {
+                    Text("value2: \(self.value2)")
+                }, onIncrement: {
+                    self.value2 += 10
+                }, onDecrement: {
+                    self.value2 -= 10
+                })
+            }
+            Spacer()
+        }.padding(20)
     }
 }
 
@@ -509,8 +593,7 @@ extension View {
 struct BasicsElement_Previews: PreviewProvider {
     static var previews: some View {
         // https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
-        BasicsElement(name: "DatePicker")
-//            .environment(\.locale, Locale(identifier: "ja_JP"))
+        BasicsElement(name: "Stepper")
             .environment(\.locale, Locale(identifier: "zh-CN"))
         
     }
