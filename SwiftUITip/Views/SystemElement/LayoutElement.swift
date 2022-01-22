@@ -30,14 +30,14 @@ struct HStackExample: View {
         VStack {
             HStack(alignment: .center, spacing: 20) {
                 ForEach(0...5, id: \.self) { i in
-                    HStack{ Text(String(i)).foregroundColor(.white) }.frame(width: 40, height: 40, alignment: .center).background(.red).cornerRadius(10)
+                    HStack { Text(String(i)).foregroundColor(.white) }.frame(width: 40, height: 40, alignment: .center).background(.red).cornerRadius(10)
                 }
                 Spacer()
             }.padding(20).background(Color.green)
             HStack(alignment: .center, spacing: 20) {
                 Spacer()
                 ForEach(0...5, id: \.self) { i in
-                    HStack{ Text(String(i)).foregroundColor(.white) }.frame(width: 40, height: 40, alignment: .center).background(.red).cornerRadius(10)
+                    HStack { Text(String(i)).foregroundColor(.white) }.frame(width: 40, height: 40, alignment: .center).background(.red).cornerRadius(10)
                 }
             }.padding(20).background(Color.green)
             Spacer()

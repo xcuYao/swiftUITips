@@ -110,12 +110,15 @@ private struct TextExample: View {
 
 private struct ButtonExample: View {
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 20) {
             // 初始化方式1
-            Button(action: {
-                print("click 1")
-            }) {
-                Text("JustButton").padding(20)
+            HStack {
+                Button(action: {
+                    print("click 1")
+                }) {
+                    Text("JustButton").padding(20)
+                }
+                Spacer()
             }
             // 初始化方式2
             Button("自定义样式") {
@@ -131,37 +134,53 @@ private struct ButtonExample: View {
             //
             Button("长按1s试试") {
                 print("click 3")
-            }.buttonStyle(customButtonStyle(color: .green))
-        }
+            }.buttonStyle(customButtonStyle2(color: .green))
+            Spacer()
+        }.padding(20)
     }
-    
+
     struct customButtonStyle: ButtonStyle {
-        var color:Color = .blue
+        var color: Color = .blue
         func makeBody(configuration: Configuration) -> some View {
             configuration.label.foregroundColor(.white)
                 .padding(20)
                 .background(RoundedRectangle(cornerRadius: 6).fill(color))
                 .compositingGroup()
                 .shadow(color: .yellow, radius: 6)
-                .opacity(configuration.isPressed ? 0.5 :1.0)
-                .scaleEffect(configuration.isPressed ? 0.8 :1.0)
+                .opacity(configuration.isPressed ? 0.5 : 1.0)
+                .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
         }
     }
-    
+
     struct customButtonStyle2: PrimitiveButtonStyle {
-        var color:Color = .blue
+        var color: Color = .blue
         func makeBody(configuration: PrimitiveButtonStyle.Configuration) -> some View {
             LongPressButton(configuration: configuration, color: color)
         }
         struct LongPressButton: View {
             let configuration: PrimitiveButtonStyle.Configuration
             let color: Color
+            @GestureState private var pressed = false
             var body: some View {
-                 Text("aa")
+                let longPress = LongPressGesture(minimumDuration: 1.0, maximumDistance: 0.0)
+                    .updating($pressed) { value, state, _ in
+                    state = value
+                }.onEnded { _ in
+                    self.configuration.trigger()
+                }
+                return configuration.label
+                    .foregroundColor(.white)
+                    .padding(20)
+                    .background(RoundedRectangle(cornerRadius: 6).fill(color))
+                    .compositingGroup()
+                    .shadow(color: .black, radius: 6, x: 4, y: 4)
+                    .opacity(pressed ? 0.5 : 1.0)
+                    .scaleEffect(pressed ? 0.8 : 1.0)
+                    .gesture(longPress)
             }
         }
     }
-    
+
 }
 
 private struct ImageExample: View {
@@ -208,16 +227,18 @@ private struct ImageExample: View {
 private struct ToggleExample: View {
 
     @State var isOn = true
+    @State var flipped = false
 
     var body: some View {
         Form {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 20) {
                 Section {
                     HStack {
                         Text("Default Toggle:")
                         Toggle(isOn: $isOn) {
                             Text("Toggle Test")
                         }
+                        Spacer()
                     }
                 }
                 Section {
@@ -227,9 +248,30 @@ private struct ToggleExample: View {
                             .toggleStyle(CustomToggleStyle())
                     }
                 }
+                Section {
+                    HStack {
+                        Toggle(isOn: $isOn, label: {
+                            Image(systemName: "arkit")
+                            Text("是否开启:")
+                        }).toggleStyle(CustomToggleStyle2())
+                    }
+                }
+                Section {
+                    HStack {
+                        Text("旋转开关:")
+                        Toggle(isOn: $isOn) {
+                            VStack {
+                                Group {
+                                    Image(systemName: flipped ? "folder.fill" : "map.fill")
+                                    Text(flipped ? "地图" : "列表")
+                                }.rotation3DEffect(flipped ? .degrees(180) : .degrees(0), axis: (x: 0, y: 1, z: 0))
+                            }
+                        }.toggleStyle(CustomToggleStyle3(flipped: $flipped))
+                    }
+                }
             }
             Spacer()
-        }
+        }.padding(20)
     }
 
     struct CustomToggleStyle: ToggleStyle {
@@ -240,9 +282,72 @@ private struct ToggleExample: View {
                 Label(title: {
                     configuration.label
                 }, icon: {
-                        Image(systemName: configuration.isOn ? "tray.fill" : "tray")
-                    })
+                    Image(systemName: configuration.isOn ? "tray.fill" : "tray")
+                })
             }.buttonStyle(.plain)
+        }
+    }
+
+    struct CustomToggleStyle2: ToggleStyle {
+        let width: CGFloat = 50
+        func makeBody(configuration: Configuration) -> some View {
+            HStack {
+                configuration.label
+                ZStack(alignment: configuration.isOn ? .trailing : .leading) {
+                    RoundedRectangle(cornerRadius: 4)
+                        .frame(width: width, height: width / 2.0)
+                        .foregroundColor(configuration.isOn ? .green : .red)
+                        .onTapGesture {
+                        withAnimation {
+                            configuration.$isOn.wrappedValue.toggle()
+                        }
+                    }
+                    RoundedRectangle(cornerRadius: 4)
+                        .frame(width: (width / 2) - 4, height: (width / 2) - 6)
+                        .padding(4)
+                        .foregroundColor(.white)
+                        .allowsHitTesting(false)
+                }
+            }
+        }
+    }
+
+    struct CustomToggleStyle3: ToggleStyle {
+
+        let width: CGFloat = 50
+        let height: CGFloat = 60
+        @Binding var flipped: Bool
+
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .frame(width: width, height: height)
+                .modifier(FlipEffect(flipped: $flipped, angle: configuration.isOn ? 180 : 0))
+                .onTapGesture {
+                withAnimation {
+                    configuration.$isOn.wrappedValue.toggle()
+                }
+            }
+        }
+    }
+
+    struct FlipEffect: GeometryEffect {
+        @Binding var flipped: Bool
+        var angle: Double
+        var animatableData: Double {
+            get { angle }
+            set { angle = newValue }
+        }
+        func effectValue(size: CGSize) -> ProjectionTransform {
+            DispatchQueue.main.async {
+                self.flipped = (self.angle >= 90 && self.angle >= 180)
+            }
+            let a = CGFloat(Angle.degrees(angle).radians)
+            var transform3d = CATransform3DIdentity
+            transform3d.m34 = -1 / max(size.width, size.height)
+            transform3d = CATransform3DRotate(transform3d, a, 0, 1, 0)
+            transform3d = CATransform3DTranslate(transform3d, -size.width / 2.0, -size.height / 2.0, 0)
+            let affineTransform = ProjectionTransform(CGAffineTransform(translationX: size.width / 2.0, y: size.height / 2.0))
+            return ProjectionTransform(transform3d).concatenating(affineTransform)
         }
     }
 
@@ -286,25 +391,25 @@ private struct LabelExample: View {
                 .labelStyle(MyLabelStyle(color: .red))
         }
     }
-    
+
     struct MyLabelStyle: LabelStyle {
         let color: Color
-        
+
         func makeBody(configuration: Configuration) -> some View {
             HStack {
                 configuration.icon
                     .padding(10)
                     .background(Circle().fill(color))
-                
+
                 configuration.title
                     .padding(.trailing, 10)
                     .lineLimit(1)
             }
-            .padding(6)
-            .background(RoundedRectangle(cornerRadius: 10).stroke(color, lineWidth: 3))
+                .padding(6)
+                .background(RoundedRectangle(cornerRadius: 10).stroke(color, lineWidth: 3))
         }
     }
-    
+
 }
 
 private struct TextFieldExample: View {
@@ -393,7 +498,7 @@ private struct TextFieldExample: View {
                 .padding(3)
                 .foregroundColor(textColor)
                 .overlay(RoundedRectangle(cornerRadius: roundedCornes)
-                    .stroke(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.5))
+                .stroke(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2.5))
                 .font(.custom("Open Sans", size: 18))
 
                 .shadow(radius: 10)
@@ -402,29 +507,29 @@ private struct TextFieldExample: View {
 }
 
 private struct SliderExample: View {
-    
+
     @State var value: Double = 5
     var body: some View {
-        VStack{
+        VStack {
             VStack {
                 Text("Slider Value: \(value)")
                 Slider(value: $value, in: 0...10)
                     .frame(width: 200, height: 20, alignment: .top)
             }.padding(20)
             Divider()
-            VStack{
+            VStack {
                 Text("Step Value: \(value)")
                 Slider(value: $value, in: 0...10, step: 1.0) {
                     Text("标题:")
                 } onEditingChanged: { bool in
-                    let str = bool ?"开始" :"结束"
+                    let str = bool ? "开始" : "结束"
                     print("状态:\(str)")
                 }.frame(width: 300, height: 20, alignment: .leading)
             }.padding(20)
             Divider()
             VStack {
                 Text("Max Min Value: \(value)")
-                Slider(value: $value, in: -100...100, label: {EmptyView()}, minimumValueLabel: {Text("-100")}, maximumValueLabel: { Text("100") })
+                Slider(value: $value, in: -100...100, label: { EmptyView() }, minimumValueLabel: { Text("-100") }, maximumValueLabel: { Text("100") })
             }.padding(20)
             Spacer(minLength: 20)
         }
@@ -433,10 +538,10 @@ private struct SliderExample: View {
 
 private struct PickerExample: View {
     @State var selection = 0
-    
+
     var devices = ["iPhone", "iPad", "Mac", "iWatch"]
     @State var selectDevice = "iPhone"
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Picker(selection: $selection, content: {
@@ -464,7 +569,7 @@ private struct DatePickerExample: View {
     init() {
         endDate = beginDate.addingTimeInterval(60 * 60 * 24)
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             VStack {
@@ -500,27 +605,27 @@ private struct DatePickerExample: View {
             Divider()
             Spacer()
         }
-        
+
     }
 }
 
 private struct SegmentedControlExample: View {
-    
-    @State var selection:Int = 0
+
+    @State var selection: Int = 0
 
     var body: some View {
-        Picker("", selection: self.$selection){
+        Picker("", selection: self.$selection) {
             Text("iPhone").tag(0)
             Text("iPad").tag(1)
             Text("iWatch").tag(2)
-        }.pickerStyle(SegmentedPickerStyle()) 
+        }.pickerStyle(SegmentedPickerStyle())
     }
 }
 
 private struct ProgressViewExample: View {
     @State private var progress = 0.5
     @State private var donwloadDes = "下载中..."
-    @State private var downloadProgress:Double = 0.0
+    @State private var downloadProgress: Double = 0.0
     private let total = 100.0
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -530,7 +635,7 @@ private struct ProgressViewExample: View {
                 ProgressView("value:\(progress)", value: progress, total: 1)
                     .accentColor(.red)
                     .foregroundColor(.yellow)
-                HStack{
+                HStack {
                     Button("More", action: { progress += 0.05 })
                     Button("Less", action: { progress -= 0.05 })
                 }
@@ -544,14 +649,14 @@ private struct ProgressViewExample: View {
                 let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
                 ProgressView(donwloadDes, value: downloadProgress, total: total)
                     .onReceive(timer, perform: { _ in
-                        if (downloadProgress < total) {
-                            downloadProgress += 2.0
-                            if (downloadProgress >= total) {
-                                downloadProgress = total
-                                donwloadDes = "下载完毕"
-                            }
+                    if (downloadProgress < total) {
+                        downloadProgress += 2.0
+                        if (downloadProgress >= total) {
+                            downloadProgress = total
+                            donwloadDes = "下载完毕"
                         }
-                    })
+                    }
+                })
                 Spacer(minLength: 40)
             }
             Spacer()
@@ -625,8 +730,8 @@ extension View {
 struct BasicsElement_Previews: PreviewProvider {
     static var previews: some View {
         // https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
-        BasicsElement(name: "Button")
+        BasicsElement(name: "Toggle")
             .environment(\.locale, Locale(identifier: "zh-CN"))
-        
+
     }
 }
