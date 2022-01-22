@@ -16,6 +16,7 @@
 		BD565F632786D594006AE9AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD565F622786D594006AE9AA /* Preview Assets.xcassets */; };
 		BD6AD85E278EB5B700F1FE90 /* Tab3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AD85D278EB5B700F1FE90 /* Tab3.swift */; };
 		BD6AD862278EB6DF00F1FE90 /* Tab1Nav1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AD861278EB6DF00F1FE90 /* Tab1Nav1.swift */; };
+		BDCEF7A8279BC622008EAF50 /* LayoutElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7A7279BC622008EAF50 /* LayoutElement.swift */; };
 		BDEBEBCD2796716E00720EDC /* BasicsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEBEBCC2796716E00720EDC /* BasicsElement.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		BD565F642786D594006AE9AA /* SwiftUITip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUITip.entitlements; sourceTree = "<group>"; };
 		BD6AD85D278EB5B700F1FE90 /* Tab3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3.swift; sourceTree = "<group>"; };
 		BD6AD861278EB6DF00F1FE90 /* Tab1Nav1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab1Nav1.swift; sourceTree = "<group>"; };
+		BDCEF7A7279BC622008EAF50 /* LayoutElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutElement.swift; sourceTree = "<group>"; };
 		BDEBEBCC2796716E00720EDC /* BasicsElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicsElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				BDEBEBCC2796716E00720EDC /* BasicsElement.swift */,
+				BDCEF7A7279BC622008EAF50 /* LayoutElement.swift */,
 			);
 			path = SystemElement;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				BD565F5E2786D593006AE9AA /* ContentView.swift in Sources */,
 				BD2392A32786EA70006221D3 /* ObserverTest.swift in Sources */,
 				BD565F5C2786D593006AE9AA /* SwiftUITipApp.swift in Sources */,
+				BDCEF7A8279BC622008EAF50 /* LayoutElement.swift in Sources */,
 				BD44EB33278C2B62008AAAC9 /* SystemElement.swift in Sources */,
 				BD44EB35278C2B76008AAAC9 /* Tab2.swift in Sources */,
 				BDEBEBCD2796716E00720EDC /* BasicsElement.swift in Sources */,

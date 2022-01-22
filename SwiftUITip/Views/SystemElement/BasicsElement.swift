@@ -115,21 +115,53 @@ private struct ButtonExample: View {
             Button(action: {
                 print("click 1")
             }) {
-                Text("JustButton")
+                Text("JustButton").padding(20)
             }
             // 初始化方式2
-            Button("JustButton") {
+            Button("自定义样式") {
                 print("click 2")
-            }
+            }.buttonStyle(customButtonStyle(color: .green))
             //
             Button(action: { }) {
-                Text("ColorButton1").foregroundColor(.white)
+                Text("简单样式").foregroundColor(.white)
             }.padding(10)
                 .buttonStyle(.plain)
                 .background(.red)
                 .cornerRadius(6)
+            //
+            Button("长按1s试试") {
+                print("click 3")
+            }.buttonStyle(customButtonStyle(color: .green))
         }
     }
+    
+    struct customButtonStyle: ButtonStyle {
+        var color:Color = .blue
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label.foregroundColor(.white)
+                .padding(20)
+                .background(RoundedRectangle(cornerRadius: 6).fill(color))
+                .compositingGroup()
+                .shadow(color: .yellow, radius: 6)
+                .opacity(configuration.isPressed ? 0.5 :1.0)
+                .scaleEffect(configuration.isPressed ? 0.8 :1.0)
+        }
+    }
+    
+    struct customButtonStyle2: PrimitiveButtonStyle {
+        var color:Color = .blue
+        func makeBody(configuration: PrimitiveButtonStyle.Configuration) -> some View {
+            LongPressButton(configuration: configuration, color: color)
+        }
+        struct LongPressButton: View {
+            let configuration: PrimitiveButtonStyle.Configuration
+            let color: Color
+            var body: some View {
+                 Text("aa")
+            }
+        }
+    }
+    
 }
 
 private struct ImageExample: View {
@@ -593,7 +625,7 @@ extension View {
 struct BasicsElement_Previews: PreviewProvider {
     static var previews: some View {
         // https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
-        BasicsElement(name: "Stepper")
+        BasicsElement(name: "Button")
             .environment(\.locale, Locale(identifier: "zh-CN"))
         
     }

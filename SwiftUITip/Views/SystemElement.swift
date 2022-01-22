@@ -13,7 +13,7 @@ struct SystemElement: View {
     
     //sections 基础组件 布局组件 功能组件 事件手势 动画图形 新特性 其他
     let basics = ["Text", "Button", "Image", "Toggle", "Label", "Slider", "TextField", "Picker", "DatePicker", "SegmentedControl", "ProgressView", "Stepper"]
-    let layout = ["HStack", "VStack", "ZStack", "LazyHStack", "LazyVStack", "List", "ScrollView", "Table", "Form", "LazyHGrid", "LazyVGrid", "Spacer", "Divider"]
+    let layouts = ["HStack", "VStack", "ZStack", "LazyHStack", "LazyVStack", "List", "ScrollView", "Table", "Form", "LazyHGrid", "LazyVGrid", "Spacer", "Divider"]
     let function = ["sheet", "NavigationView", "TabView", "Map", "Picker", "ActionSheet"]
     let gesture = ["TapGesture", "LongPressGesture", "DragGesture", "Alert", "ActionSheet", "Popover", "Timer"]
     let animation = ["", "", ""]
@@ -22,6 +22,13 @@ struct SystemElement: View {
 
     var body: some View {
         List() {
+            Section(header: Text("布局组件")) {
+                ForEach(layouts, id: \.self) { data in
+                    NavigationLink(data, destination: {
+                        LayoutElement(name: data)
+                    })
+                }
+            }
             Section(header: Text("基础组件")) {
                 ForEach(basics, id: \.self) { data in
                     NavigationLink(destination: {
@@ -29,11 +36,6 @@ struct SystemElement: View {
                     }) {
                         Text(data)
                     }
-                }
-            }
-            Section(header: Text("布局组件")) {
-                ForEach(layout, id: \.self) { data in
-                    Text(data)
                 }
             }
             Section(header: Text("功能组件")) {
