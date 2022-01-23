@@ -17,6 +17,7 @@
 		BD6AD85E278EB5B700F1FE90 /* Tab3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AD85D278EB5B700F1FE90 /* Tab3.swift */; };
 		BD6AD862278EB6DF00F1FE90 /* Tab1Nav1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6AD861278EB6DF00F1FE90 /* Tab1Nav1.swift */; };
 		BDCEF7A8279BC622008EAF50 /* LayoutElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7A7279BC622008EAF50 /* LayoutElement.swift */; };
+		BDCEF7AB279D99FE008EAF50 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7AA279D99FE008EAF50 /* ColorExtension.swift */; };
 		BDEBEBCD2796716E00720EDC /* BasicsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEBEBCC2796716E00720EDC /* BasicsElement.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		BD6AD85D278EB5B700F1FE90 /* Tab3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3.swift; sourceTree = "<group>"; };
 		BD6AD861278EB6DF00F1FE90 /* Tab1Nav1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab1Nav1.swift; sourceTree = "<group>"; };
 		BDCEF7A7279BC622008EAF50 /* LayoutElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutElement.swift; sourceTree = "<group>"; };
+		BDCEF7AA279D99FE008EAF50 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		BDEBEBCC2796716E00720EDC /* BasicsElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicsElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 		BD565F5A2786D593006AE9AA /* SwiftUITip */ = {
 			isa = PBXGroup;
 			children = (
+				BDCEF7A9279D99B3008EAF50 /* Extension */,
 				BD44EB31278C1528008AAAC9 /* Views */,
 				BD565F5B2786D593006AE9AA /* SwiftUITipApp.swift */,
 				BD565F5D2786D593006AE9AA /* ContentView.swift */,
@@ -95,6 +98,14 @@
 				BD565F622786D594006AE9AA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BDCEF7A9279D99B3008EAF50 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BDCEF7AA279D99FE008EAF50 /* ColorExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		BDEBEBCB2796704500720EDC /* SystemElement */ = {
@@ -185,6 +196,7 @@
 				BDEBEBCD2796716E00720EDC /* BasicsElement.swift in Sources */,
 				BD6AD862278EB6DF00F1FE90 /* Tab1Nav1.swift in Sources */,
 				BD6AD85E278EB5B700F1FE90 /* Tab3.swift in Sources */,
+				BDCEF7AB279D99FE008EAF50 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

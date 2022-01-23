@@ -13,7 +13,7 @@ struct SystemElement: View {
 
     //sections 基础组件 布局组件 功能组件 事件手势 动画图形 新特性 其他
     let basics = ["Text", "Button", "Image", "Toggle", "Label", "Slider", "TextField", "Picker", "DatePicker", "SegmentedControl", "ProgressView", "Stepper"]
-    let layouts = ["HStack", "VStack", "ZStack", "LazyHStack", "LazyVStack", "List", "ScrollView", "Table", "Form", "LazyHGrid", "LazyVGrid", "Spacer", "Divider"]
+    let layouts = ["HStack", "VStack", "ZStack", "LazyStack", "List", "ScrollView", "Table", "Form", "LazyHGrid", "LazyVGrid", "Spacer", "Divider"]
     let function = ["sheet", "NavigationView", "TabView", "Map", "Picker", "ActionSheet"]
     let gesture = ["TapGesture", "LongPressGesture", "DragGesture", "Alert", "ActionSheet", "Popover", "Timer", "GeometryReader"]
     let animation = ["", "", ""]

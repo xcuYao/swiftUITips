@@ -200,6 +200,7 @@ private struct ImageExample: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 40)
                     .background(Color.brown)
+                    .clipped()
                 Text("120*40 scaledToFit")
             }
             VStack {
@@ -873,7 +874,7 @@ extension View {
 struct BasicsElement_Previews: PreviewProvider {
     static var previews: some View {
         // https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
-        BasicsElement(name: "ProgressView")
+        BasicsElement(name: "Image")
             .environment(\.locale, Locale(identifier: "zh-CN"))
 
     }
