@@ -628,40 +628,183 @@ private struct ProgressViewExample: View {
     @State private var downloadProgress: Double = 0.0
     private let total = 100.0
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            ProgressView("loading")
-                .progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
-            VStack(alignment: .leading) {
-                ProgressView("value:\(progress)", value: progress, total: 1)
-                    .accentColor(.red)
-                    .foregroundColor(.yellow)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                ProgressView("loading")
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
+                VStack(alignment: .leading) {
+                    ProgressView("value:\(progress)", value: progress, total: 1)
+                        .accentColor(.red)
+                        .foregroundColor(.yellow)
+                    HStack {
+                        Button("More", action: { progress += 0.05 })
+                        Button("Less", action: { progress -= 0.05 })
+                    }
+                }
+                VStack {
+                    ProgressView("\(progress)", value: progress, total: 1)
+                        .progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
+                }
                 HStack {
-                    Button("More", action: { progress += 0.05 })
-                    Button("Less", action: { progress -= 0.05 })
+                    Spacer(minLength: 40)
+                    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+                    ProgressView(donwloadDes, value: downloadProgress, total: total)
+                        .onReceive(timer, perform: { _ in
+                        if (downloadProgress < total) {
+                            downloadProgress += 2.0
+                            if (downloadProgress >= total) {
+                                downloadProgress = total
+                                donwloadDes = "下载完毕"
+                            }
+                        }
+                    })
+                    Spacer(minLength: 40)
+                }
+                HStack {
+                    CustomProgressView(progress: progress).frame(width: 300, height: 100, alignment: .center)
+                }
+                VStack {
+                    CustomProgressView2(progress)
+                        .frame(width: 200, height: 200, alignment: .center)
+
+                           Slider(value: self.$progress, in: 0...1)
+                               .padding(.horizontal, 30)
+
+                           HStack {
+                               Group {
+                                   Button("20%") {
+                                       withAnimation(.easeInOut(duration: 0.5)) {
+                                           self.progress = 0.2
+                                       }
+                                   }.foregroundColor(Color.black)
+                                   Button("50%") {
+                                       withAnimation(.easeInOut(duration: 0.5)) {
+                                           self.progress = 0.5
+                                       }
+                                   }.foregroundColor(Color.black)
+                                   Button("80%") {
+                                       withAnimation(.easeInOut(duration: 0.5)) {
+                                           self.progress = 0.8
+                                       }
+                                   }.foregroundColor(Color.black)
+                               }
+                               .foregroundColor(.white)
+                               .padding( .all, 10)
+                               .background(RoundedRectangle(cornerRadius: 5.0).foregroundColor(.green))
+                           }
+                       }
+                Spacer()
+            }.padding(20)
+        }
+    }
+
+
+    struct CustomProgressView: View {
+        let gradient = Gradient(colors: [.blue, .green])
+        let scliceSize = 0.45
+        let progress: Double
+        
+        private let percentageFormatter: NumberFormatter = {
+              let numberFormatter = NumberFormatter()
+              numberFormatter.numberStyle = .percent
+              return numberFormatter
+          }()
+        
+        var stockGradient: AngularGradient {
+            AngularGradient(gradient: gradient, center: .center, angle: .degrees(-10))
+        }
+        var rotateAngle: Angle {
+                .degrees(90 + scliceSize * 360 * 0.5)
+        }
+
+        func stockStyle(_ proxy: GeometryProxy) -> StrokeStyle {
+            StrokeStyle(lineWidth: 0.1 * min(proxy.size.width, proxy.size.height), lineCap: .round)
+        }
+
+        var body: some View {
+            GeometryReader { proxy in
+                HStack {
+                    VStack {
+                        Circle()
+                            .trim(from: 0, to: 1 - CGFloat(scliceSize))
+                            .stroke(self.stockGradient, style: self.stockStyle(proxy))
+                            .padding(.all, 10)
+                            .rotationEffect(self.rotateAngle, anchor: .center)
+                            .offset(x: 0, y: 0.1 * min(proxy.size.width, proxy.size.height))
+                        Text("背景").font(.title).bold()
+                    }
+                    VStack {
+                        Circle()
+                            .trim(from: 0, to: CGFloat(self.progress * (1 - self.scliceSize)))
+                            .stroke(Color.purple, style: self.stockStyle(proxy))
+                            .padding(.all, 10)
+                            .rotationEffect(self.rotateAngle, anchor: .center)
+                            .offset(x: 0, y: 0.1 * min(proxy.size.width, proxy.size.height))
+                        Text("当前进度").font(.title).bold()
+                    }
+                    Text("\(self.percentageFormatter.string(from: NSNumber(value: self.progress))!)")
+                                        .font(.largeTitle)
+                                        .bold()
                 }
             }
-            VStack {
-                ProgressView("\(progress)", value: progress, total: 1)
-                    .progressViewStyle(CircularProgressViewStyle(tint: Color.blue))
-            }
-            HStack {
-                Spacer(minLength: 40)
-                let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-                ProgressView(donwloadDes, value: downloadProgress, total: total)
-                    .onReceive(timer, perform: { _ in
-                    if (downloadProgress < total) {
-                        downloadProgress += 2.0
-                        if (downloadProgress >= total) {
-                            downloadProgress = total
-                            donwloadDes = "下载完毕"
-                        }
-                    }
-                })
-                Spacer(minLength: 40)
-            }
-            Spacer()
-        }.padding(20)
+        }
     }
+    
+    struct CustomProgressView2: View {
+        let gradient = Gradient(colors: [.green, .blue])
+            let sliceSize = 0.45
+            let progress: Double
+
+            private let percentageFormatter: NumberFormatter = {
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .percent
+                return numberFormatter
+            }()
+
+            var strokeGradient: AngularGradient {
+                AngularGradient(gradient: gradient, center: .center, angle: .degrees(-10))
+            }
+
+            var rotateAngle: Angle {
+                .degrees(90 + sliceSize * 360 * 0.5)
+            }
+
+            init(_ progress: Double = 0.3) {
+                self.progress = progress
+            }
+
+            private func strokeStyle(_ proxy: GeometryProxy) -> StrokeStyle {
+                StrokeStyle(lineWidth: 0.1 * min(proxy.size.width, proxy.size.height),
+                            lineCap: .round)
+            }
+
+            public var body: some View {
+                GeometryReader { proxy in
+                    ZStack {
+                        Group {
+                            Circle()
+                                .trim(from: 0, to: 1 - CGFloat(self.sliceSize))
+                                .stroke(self.strokeGradient,
+                                        style: self.strokeStyle(proxy))
+                                .padding(.all, 10)
+
+                            Circle()
+                                .trim(from: 0, to: CGFloat(self.progress * (1 - self.sliceSize)))
+                                .stroke(Color.purple,
+                                        style: self.strokeStyle(proxy))
+                                .padding(.all, 10)
+                        }
+                        .rotationEffect(self.rotateAngle, anchor:  .center)
+                        .offset(x: 0, y: 0.1 * min(proxy.size.width, proxy.size.height))
+
+                        Text("\(self.percentageFormatter.string(from: NSNumber(value: self.progress))!)")
+                            .font(.largeTitle)
+                            .bold()
+                    }
+                }
+            }
+    }
+    
 }
 
 private struct StepperExample: View {
@@ -730,7 +873,7 @@ extension View {
 struct BasicsElement_Previews: PreviewProvider {
     static var previews: some View {
         // https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
-        BasicsElement(name: "Toggle")
+        BasicsElement(name: "ProgressView")
             .environment(\.locale, Locale(identifier: "zh-CN"))
 
     }
