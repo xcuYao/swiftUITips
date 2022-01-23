@@ -432,7 +432,7 @@ private struct TextFieldExample: View {
                     .padding(.leading, 20)
             }.padding(.top)
                 .padding(.bottom)
-                .background(VisualEffectView())
+//                .background(VisualEffectView())
             HStack {
                 Image("swiftui").resizable().frame(width: 20, height: 20)
                 TextField("圆角样式", text: $value)
@@ -461,19 +461,18 @@ private struct TextFieldExample: View {
             Spacer()
         }.padding(10)
     }
-
-    struct VisualEffectView: NSViewRepresentable {
-        func makeNSView(context: Context) -> NSVisualEffectView {
-            let view = NSVisualEffectView()
-            view.blendingMode = .behindWindow // << important !!
-            view.isEmphasized = true
-            view.material = .titlebar
-            return view
-        }
-
-        func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
-        }
-    }
+//    struct VisualEffectView: NSViewRepresentable {
+//        func makeNSView(context: Context) -> NSVisualEffectView {
+//            let view = NSVisualEffectView()
+//            view.blendingMode = .behindWindow // << important !!
+//            view.isEmphasized = true
+//            view.material = .titlebar
+//            return view
+//        }
+//
+//        func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
+//        }
+//    }
 
     struct OvalTextFieldStyle: TextFieldStyle {
         func _body(configuration: TextField<Self._Label>) -> some View {
@@ -592,7 +591,7 @@ private struct DatePickerExample: View {
                 Image(systemName: "airplane")
                 Text("field Style")
             }).frame(width: 400, height: 20)
-                .datePickerStyle(.field)
+//                .datePickerStyle(.field)
             DatePicker(selection: $selection, label: {
                 Image(systemName: "airplane")
                 Text("graphical Style")
@@ -602,7 +601,7 @@ private struct DatePickerExample: View {
                 Image(systemName: "airplane")
                 Text("graphical Style")
             }).frame(width: 400, height: 20)
-                .datePickerStyle(.stepperField)
+//                .datePickerStyle(.stepperField)
             Divider()
             Spacer()
         }
@@ -840,12 +839,12 @@ private struct StepperExample: View {
 }
 
 //swiftUI层面不支持 曲线救国 去掉高亮效果
-extension NSTextField {
-    open override var focusRingType: NSFocusRingType {
-        get { .none }
-        set { }
-    }
-}
+//extension NSTextField {
+//    open override var focusRingType: NSFocusRingType {
+//        get { .none }
+//        set { }
+//    }
+//}
 
 extension TextField {
     func extensionTextFieldView(roundedCornes: CGFloat, startColor: Color, endColor: Color) -> some View {

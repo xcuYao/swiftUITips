@@ -1,14 +1,13 @@
 //
 //  ContentView.swift
-//  SwiftUITip
+//  Shared
 //
-//  Created by yaoning on 2022/1/6.
+//  Created by yaoning on 2022/1/23.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-
     @State var selection: Int = 4
 
     var body: some View {
