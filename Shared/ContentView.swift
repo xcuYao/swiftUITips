@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var selection: Int = 4
+    @State var selection: Int = 0
 
     var body: some View {
         NavigationView {
@@ -27,17 +27,26 @@ struct ContentView: View {
             #else
                 TabView(selection: $selection) {
                     SystemElement()
-                        .tabItem({ Text("系统组件") })
+                        .tabItem({
+                            Image(systemName: "apps.iphone")
+                            Text("系统组件")
+                        })
                         .tag(0)
                     Tab2()
-                        .tabItem({ Text("状态管理") })
+                        .tabItem({
+                            Image(systemName: "rectangle.leadinghalf.filled")
+                            Text("状态管理")
+                        })
                         .tag(1)
                     Tab3()
-                        .tabItem({ Text("三方组件") })
+                        .tabItem({
+                            Image(systemName: "antenna.radiowaves.left.and.right")
+                            Text("三方组件")
+                        })
                         .tag(2)
                 }.navigationBarTitle("SwiftUITip")
             #endif
-        }
+        }.accentColor(Color(hex: "#FC8960"))
     }
 }
 

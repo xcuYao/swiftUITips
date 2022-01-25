@@ -22,13 +22,6 @@ struct SystemElement: View {
 
     var body: some View {
         List() {
-            Section(header: Text("布局组件")) {
-                ForEach(layouts, id: \.self) { data in
-                    NavigationLink(data, destination: {
-                        LayoutElement(name: data)
-                    })
-                }
-            }
             Section(header: Text("基础组件")) {
                 ForEach(basics, id: \.self) { data in
                     NavigationLink(destination: {
@@ -36,6 +29,13 @@ struct SystemElement: View {
                     }) {
                         Text(data)
                     }
+                }
+            }
+            Section(header: Text("布局组件")) {
+                ForEach(layouts, id: \.self) { data in
+                    NavigationLink(data, destination: {
+                        LayoutElement(name: data)
+                    })
                 }
             }
             Section(header: Text("功能组件")) {

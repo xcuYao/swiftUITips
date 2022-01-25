@@ -12,34 +12,45 @@ struct BasicsElement: View {
     @State var name: String = "Text"
 
     var body: some View {
-        switch name {
-        case "Text":
-            TextExample()
-        case "Button":
-            ButtonExample()
-        case "Image":
-            ImageExample()
-        case "Toggle":
-            ToggleExample()
-        case "Label":
-            LabelExample()
-        case "TextField":
-            TextFieldExample()
-        case "Slider":
-            SliderExample()
-        case "Picker":
-            PickerExample()
-        case "DatePicker":
-            DatePickerExample()
-        case "SegmentedControl":
-            SegmentedControlExample()
-        case "ProgressView":
-            ProgressViewExample()
-        case "Stepper":
-            StepperExample()
-        default:
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        }
+        ScrollView {
+            switch name {
+            case "Text":
+                TextExample()
+            case "Button":
+                ButtonExample()
+            case "Image":
+                ImageExample()
+            case "Toggle":
+                ToggleExample()
+            case "Label":
+                LabelExample()
+            case "TextField":
+                TextFieldExample()
+            case "Slider":
+                SliderExample()
+            case "Picker":
+                PickerExample()
+            case "DatePicker":
+                DatePickerExample()
+            case "SegmentedControl":
+                SegmentedControlExample()
+            case "ProgressView":
+                ProgressViewExample()
+            case "Stepper":
+                StepperExample()
+            default:
+                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            }
+        }.background(Color(hex: "#F2F2F7")).navigationBarTitle(Text(name), displayMode: .inline)
+    }
+}
+
+struct BasicsElement_Previews: PreviewProvider {
+    static var previews: some View {
+        // https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
+        BasicsElement(name: "Toggle")
+            .environment(\.locale, Locale(identifier: "zh-CN"))
+
     }
 }
 
@@ -60,7 +71,7 @@ private struct TextExample: View {
                 .font(Font.custom("Herculanum", size: 12))
                 .padding(10)
             Divider()
-            HStack(spacing: 10) {
+            VStack(spacing: 10) {
                 Text("SwiftUI").foregroundColor(Color.red) +
                     Text(" Is").foregroundColor(Color.green) +
                     Text(" Good").foregroundColor(Color.blue)
@@ -87,7 +98,7 @@ private struct TextExample: View {
             Divider()
             VStack(alignment: .leading) {
                 Text("最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行最多两行").lineLimit(2)
-                HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 10) {
                     Text("MarkDown支持测试")
                     Text("[link](https://www.baidu.com)")
                     Text("*italic*")
@@ -97,10 +108,8 @@ private struct TextExample: View {
                     Text("***[this](https://www.baidu.com) ~is~ `Cool`***")
                 }.padding(10)
             }.padding(10)
-
             Spacer()
-        }.background(Color.white)
-            .cornerRadius(6)
+        }.cornerRadius(6)
     }
 
     func tapHandler() {
@@ -109,12 +118,13 @@ private struct TextExample: View {
 }
 
 private struct ButtonExample: View {
+    @State private var showAlert = false
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             // 初始化方式1
             HStack {
                 Button(action: {
-                    print("click 1")
+                    showAlert = !showAlert
                 }) {
                     Text("JustButton").padding(20)
                 }
@@ -122,10 +132,12 @@ private struct ButtonExample: View {
             }
             // 初始化方式2
             Button("自定义样式") {
-                print("click 2")
+                showAlert = !showAlert
             }.buttonStyle(customButtonStyle(color: .green))
             //
-            Button(action: { }) {
+            Button(action: {
+                showAlert = !showAlert
+            }) {
                 Text("简单样式").foregroundColor(.white)
             }.padding(10)
                 .buttonStyle(.plain)
@@ -133,10 +145,13 @@ private struct ButtonExample: View {
                 .cornerRadius(6)
             //
             Button("长按1s试试") {
-                print("click 3")
+                showAlert = !showAlert
             }.buttonStyle(customButtonStyle2(color: .green))
             Spacer()
         }.padding(20)
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("提示信息"), message: Text("无聊的信息"), dismissButton: .default(Text("👌")))
+            }
     }
 
     struct customButtonStyle: ButtonStyle {
@@ -187,8 +202,11 @@ private struct ImageExample: View {
     // 1. 修改图片尺寸 先resizable后调整frame 才会改变图片大小
     // 调用顺序会导致某些方法调不到 因为点语法每次返回的都是一个新的struct
     var body: some View {
-        VStack {
-            Image("swiftui")
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Image("swiftui")
+                Spacer()
+            }
             Image("swiftui")
                 .resizable()
                 .frame(width: 120, height: 120)
@@ -209,6 +227,7 @@ private struct ImageExample: View {
                     .aspectRatio(20, contentMode: .fill)
                     .frame(width: 120, height: 40)
                     .fixedSize(horizontal: true, vertical: false)
+                    .clipped()
                 Text("120*40 scaledToFill")
             }
             VStack {
@@ -221,7 +240,7 @@ private struct ImageExample: View {
                     .frame(width: 60, height: 60)
                 Text("System image")
             }
-        }
+        }.padding(20)
     }
 }
 
@@ -867,14 +886,5 @@ extension View {
             .overlay(Rectangle().frame(height: 2).padding(.top, 35))
             .foregroundColor(.darkPink)
             .padding(10)
-    }
-}
-
-struct BasicsElement_Previews: PreviewProvider {
-    static var previews: some View {
-        // https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
-        BasicsElement(name: "Image")
-            .environment(\.locale, Locale(identifier: "zh-CN"))
-
     }
 }
