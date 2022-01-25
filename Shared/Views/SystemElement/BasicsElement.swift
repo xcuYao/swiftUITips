@@ -12,14 +12,34 @@ struct BasicsElement: View {
     @State var name: String = "Text"
 
     var body: some View {
-        ScrollView {
+        #if os(macOS)
+        VStack {
+            contentView(name: name)
+        }
+        #else
+        VStack {
+           contentView(name: name)
+        }.background(Color(hex: "#F2F2F7")).navigationBarTitle(Text(name), displayMode: .inline)
+        #endif
+        
+    }
+    
+    struct contentView: View {
+        var name: String
+        var body: some View {
             switch name {
             case "Text":
-                TextExample()
+                ScrollView {
+                    TextExample()
+                }
             case "Button":
-                ButtonExample()
+                ScrollView {
+                    ButtonExample()
+                }
             case "Image":
-                ImageExample()
+                ScrollView {
+                    ImageExample()
+                }
             case "Toggle":
                 ToggleExample()
             case "Label":
@@ -31,9 +51,9 @@ struct BasicsElement: View {
             case "Picker":
                 PickerExample()
             case "DatePicker":
-                DatePickerExample()
-            case "SegmentedControl":
-                SegmentedControlExample()
+                ScrollView {
+                    DatePickerExample()
+                }
             case "ProgressView":
                 ProgressViewExample()
             case "Stepper":
@@ -41,14 +61,15 @@ struct BasicsElement: View {
             default:
                 Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             }
-        }.background(Color(hex: "#F2F2F7")).navigationBarTitle(Text(name), displayMode: .inline)
+        }
     }
+    
 }
 
 struct BasicsElement_Previews: PreviewProvider {
     static var previews: some View {
         // https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
-        BasicsElement(name: "Toggle")
+        BasicsElement(name: "DatePicker")
             .environment(\.locale, Locale(identifier: "zh-CN"))
 
     }
@@ -120,6 +141,7 @@ private struct TextExample: View {
 private struct ButtonExample: View {
     @State private var showAlert = false
     var body: some View {
+
         VStack(alignment: .leading, spacing: 20) {
             // 初始化方式1
             HStack {
@@ -150,8 +172,8 @@ private struct ButtonExample: View {
             Spacer()
         }.padding(20)
             .alert(isPresented: $showAlert) {
-                Alert(title: Text("提示信息"), message: Text("无聊的信息"), dismissButton: .default(Text("👌")))
-            }
+            Alert(title: Text("提示信息"), message: Text("无聊的信息"), dismissButton: .default(Text("👌")))
+        }
     }
 
     struct customButtonStyle: ButtonStyle {
@@ -248,52 +270,48 @@ private struct ToggleExample: View {
 
     @State var isOn = true
     @State var flipped = false
-
+    
+    private var outPadding: Double {
+        #if os(macOS)
+        return 10
+        #else
+        return -10
+        #endif
+    }
+    
     var body: some View {
         Form {
-            VStack(alignment: .leading, spacing: 20) {
-                Section {
-                    HStack {
-                        Text("Default Toggle:")
-                        Toggle(isOn: $isOn) {
-                            Text("Toggle Test")
-                        }
-                        Spacer()
-                    }
+            HStack {
+                Text("Default Toggle:")
+                Toggle(isOn: $isOn) {
+                    Text("Toggle Test")
                 }
-                Section {
-                    HStack {
-                        Text("Custom Toggle:")
-                        Toggle("Toggle Me", isOn: $isOn)
-                            .toggleStyle(CustomToggleStyle())
-                    }
-                }
-                Section {
-                    HStack {
-                        Toggle(isOn: $isOn, label: {
-                            Image(systemName: "arkit")
-                            Text("是否开启:")
-                        }).toggleStyle(CustomToggleStyle2())
-                    }
-                }
-                Section {
-                    HStack {
-                        Text("旋转开关:")
-                        Toggle(isOn: $isOn) {
-                            VStack {
-                                Group {
-                                    Image(systemName: flipped ? "folder.fill" : "map.fill")
-                                    Text(flipped ? "地图" : "列表")
-                                }.rotation3DEffect(flipped ? .degrees(180) : .degrees(0), axis: (x: 0, y: 1, z: 0))
-                            }
-                        }.toggleStyle(CustomToggleStyle3(flipped: $flipped))
-                    }
-                }
+                Spacer()
             }
-            Spacer()
-        }.padding(20)
+            HStack {
+                Text("Custom Toggle:")
+                Toggle("Toggle Me", isOn: $isOn)
+                    .toggleStyle(CustomToggleStyle())
+            }
+            HStack {
+                Toggle(isOn: $isOn, label: {
+                    Image(systemName: "arkit")
+                    Text("是否开启:")
+                }).toggleStyle(CustomToggleStyle2())
+            }
+            HStack {
+                Toggle(isOn: $isOn) {
+                    VStack {
+                        Group {
+                            Image(systemName: flipped ? "folder.fill" : "map.fill")
+                            Text(flipped ? "地图" : "列表")
+                        }.rotation3DEffect(flipped ? .degrees(180) : .degrees(0), axis: (x: 0, y: 1, z: 0))
+                    }
+                }.toggleStyle(CustomToggleStyle3(flipped: $flipped))
+            }
+        }.padding(self.outPadding)
     }
-
+    
     struct CustomToggleStyle: ToggleStyle {
         func makeBody(configuration: Configuration) -> some View {
             Button(action: {
@@ -377,7 +395,10 @@ private struct LabelExample: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Label("SwiftUI", image: "swiftui")
+            HStack {
+                Label("SwiftUI", image: "swiftui")
+                Spacer()
+            }
             Label("剪贴", systemImage: "scissors")
                 .font(.largeTitle)
                 .foregroundColor(.blue)
@@ -409,7 +430,8 @@ private struct LabelExample: View {
                 .labelStyle(TitleAndIconLabelStyle())
             Label("自定义Style", systemImage: "suit.heart.fill")
                 .labelStyle(MyLabelStyle(color: .red))
-        }
+            Spacer()
+        }.padding(20)
     }
 
     struct MyLabelStyle: LabelStyle {
@@ -430,6 +452,36 @@ private struct LabelExample: View {
         }
     }
 
+}
+
+private struct SliderExample: View {
+
+    @State var value: Double = 5
+    var body: some View {
+        VStack(alignment: .center) {
+            VStack {
+                Text("Slider Value: \(value)")
+                Slider(value: $value, in: 0...10)
+                    .frame(width: 200, height: 20, alignment: .top)
+            }.padding(20)
+            Divider()
+            VStack {
+                Text("Step Value: \(value)")
+                Slider(value: $value, in: 0...10, step: 1.0) {
+                    Text("标题:")
+                } onEditingChanged: { bool in
+                    let str = bool ? "开始" : "结束"
+                    print("状态:\(str)")
+                }.frame(width: 300, height: 20, alignment: .leading)
+            }.padding(20)
+            Divider()
+            VStack {
+                Text("Max Min Value: \(value)")
+                Slider(value: $value, in: -100...100, label: { EmptyView() }, minimumValueLabel: { Text("-100") }, maximumValueLabel: { Text("100") })
+            }.padding(20)
+            Spacer(minLength: 20)
+        }
+    }
 }
 
 private struct TextFieldExample: View {
@@ -478,7 +530,7 @@ private struct TextFieldExample: View {
                 TextField("Search", text: $value)
             }.underlineTextField()
             Spacer()
-        }.padding(10)
+        }.padding(20)
     }
 //    struct VisualEffectView: NSViewRepresentable {
 //        func makeNSView(context: Context) -> NSVisualEffectView {
@@ -525,36 +577,6 @@ private struct TextFieldExample: View {
     }
 }
 
-private struct SliderExample: View {
-
-    @State var value: Double = 5
-    var body: some View {
-        VStack {
-            VStack {
-                Text("Slider Value: \(value)")
-                Slider(value: $value, in: 0...10)
-                    .frame(width: 200, height: 20, alignment: .top)
-            }.padding(20)
-            Divider()
-            VStack {
-                Text("Step Value: \(value)")
-                Slider(value: $value, in: 0...10, step: 1.0) {
-                    Text("标题:")
-                } onEditingChanged: { bool in
-                    let str = bool ? "开始" : "结束"
-                    print("状态:\(str)")
-                }.frame(width: 300, height: 20, alignment: .leading)
-            }.padding(20)
-            Divider()
-            VStack {
-                Text("Max Min Value: \(value)")
-                Slider(value: $value, in: -100...100, label: { EmptyView() }, minimumValueLabel: { Text("-100") }, maximumValueLabel: { Text("100") })
-            }.padding(20)
-            Spacer(minLength: 20)
-        }
-    }
-}
-
 private struct PickerExample: View {
     @State var selection = 0
 
@@ -586,7 +608,7 @@ private struct DatePickerExample: View {
     let beginDate = Date()
     var endDate = Date()
     init() {
-        endDate = beginDate.addingTimeInterval(60 * 60 * 24)
+        endDate = beginDate.addingTimeInterval(60 * 60 * 24 * 365)
     }
 
     var body: some View {
@@ -594,50 +616,46 @@ private struct DatePickerExample: View {
             VStack {
                 Text("\(selection)")
                 DatePicker("date", selection: $selection, in: beginDate...endDate, displayedComponents: .date)
-                    .frame(width: 300, height: 20)
                 DatePicker("hourAndMinute", selection: $selection, in: beginDate...endDate, displayedComponents: .hourAndMinute)
-                    .frame(width: 300, height: 20)
             }.padding(20)
             Divider()
             HStack {
                 DatePicker(selection: $selection, label: {
                     Image(systemName: "airplane")
                     Text("compact Style")
-                }).frame(width: 400, height: 20)
-                    .datePickerStyle(.compact)
+                })
             }
+            Divider()
+            #if os(macOS)
             DatePicker(selection: $selection, label: {
                 Image(systemName: "airplane")
                 Text("field Style")
-            }).frame(width: 400, height: 20)
-//                .datePickerStyle(.field)
+            }).datePickerStyle(.field)
+            #else
             DatePicker(selection: $selection, label: {
                 Image(systemName: "airplane")
-                Text("graphical Style")
-            }).frame(width: 400, height: 200)
-                .datePickerStyle(.graphical)
-            DatePicker(selection: $selection, label: {
-                Image(systemName: "airplane")
-                Text("graphical Style")
-            }).frame(width: 400, height: 20)
-//                .datePickerStyle(.stepperField)
+                Text("field Style")
+            })
+            #endif
             Divider()
-            Spacer()
+            DatePicker(selection: $selection, label: {
+                Image(systemName: "airplane")
+                Text("graphical Style")
+            }).datePickerStyle(.graphical)
+            Divider()
+            #if os(macOS)
+            DatePicker(selection: $selection, label: {
+                Image(systemName: "airplane")
+                Text("graphical Style")
+            }).datePickerStyle(.stepperField)
+            #else
+            DatePicker(selection: $selection, label: {
+                Image(systemName: "airplane")
+                Text("graphical Style")
+            })
+            #endif
         }
 
-    }
-}
-
-private struct SegmentedControlExample: View {
-
-    @State var selection: Int = 0
-
-    var body: some View {
-        Picker("", selection: self.$selection) {
-            Text("iPhone").tag(0)
-            Text("iPad").tag(1)
-            Text("iWatch").tag(2)
-        }.pickerStyle(SegmentedPickerStyle())
     }
 }
 
@@ -686,32 +704,32 @@ private struct ProgressViewExample: View {
                     CustomProgressView2(progress)
                         .frame(width: 200, height: 200, alignment: .center)
 
-                           Slider(value: self.$progress, in: 0...1)
-                               .padding(.horizontal, 30)
+                    Slider(value: self.$progress, in: 0...1)
+                        .padding(.horizontal, 30)
 
-                           HStack {
-                               Group {
-                                   Button("20%") {
-                                       withAnimation(.easeInOut(duration: 0.5)) {
-                                           self.progress = 0.2
-                                       }
-                                   }.foregroundColor(Color.black)
-                                   Button("50%") {
-                                       withAnimation(.easeInOut(duration: 0.5)) {
-                                           self.progress = 0.5
-                                       }
-                                   }.foregroundColor(Color.black)
-                                   Button("80%") {
-                                       withAnimation(.easeInOut(duration: 0.5)) {
-                                           self.progress = 0.8
-                                       }
-                                   }.foregroundColor(Color.black)
-                               }
-                               .foregroundColor(.white)
-                               .padding( .all, 10)
-                               .background(RoundedRectangle(cornerRadius: 5.0).foregroundColor(.green))
-                           }
-                       }
+                    HStack {
+                        Group {
+                            Button("20%") {
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    self.progress = 0.2
+                                }
+                            }.foregroundColor(Color.black)
+                            Button("50%") {
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    self.progress = 0.5
+                                }
+                            }.foregroundColor(Color.black)
+                            Button("80%") {
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    self.progress = 0.8
+                                }
+                            }.foregroundColor(Color.black)
+                        }
+                            .foregroundColor(.white)
+                            .padding(.all, 10)
+                            .background(RoundedRectangle(cornerRadius: 5.0).foregroundColor(.green))
+                    }
+                }
                 Spacer()
             }.padding(20)
         }
@@ -722,13 +740,13 @@ private struct ProgressViewExample: View {
         let gradient = Gradient(colors: [.blue, .green])
         let scliceSize = 0.45
         let progress: Double
-        
+
         private let percentageFormatter: NumberFormatter = {
-              let numberFormatter = NumberFormatter()
-              numberFormatter.numberStyle = .percent
-              return numberFormatter
-          }()
-        
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .percent
+            return numberFormatter
+        }()
+
         var stockGradient: AngularGradient {
             AngularGradient(gradient: gradient, center: .center, angle: .degrees(-10))
         }
@@ -762,68 +780,68 @@ private struct ProgressViewExample: View {
                         Text("当前进度").font(.title).bold()
                     }
                     Text("\(self.percentageFormatter.string(from: NSNumber(value: self.progress))!)")
-                                        .font(.largeTitle)
-                                        .bold()
+                        .font(.largeTitle)
+                        .bold()
                 }
             }
         }
     }
-    
+
     struct CustomProgressView2: View {
         let gradient = Gradient(colors: [.green, .blue])
-            let sliceSize = 0.45
-            let progress: Double
+        let sliceSize = 0.45
+        let progress: Double
 
-            private let percentageFormatter: NumberFormatter = {
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .percent
-                return numberFormatter
-            }()
+        private let percentageFormatter: NumberFormatter = {
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .percent
+            return numberFormatter
+        }()
 
-            var strokeGradient: AngularGradient {
-                AngularGradient(gradient: gradient, center: .center, angle: .degrees(-10))
-            }
+        var strokeGradient: AngularGradient {
+            AngularGradient(gradient: gradient, center: .center, angle: .degrees(-10))
+        }
 
-            var rotateAngle: Angle {
+        var rotateAngle: Angle {
                 .degrees(90 + sliceSize * 360 * 0.5)
-            }
+        }
 
-            init(_ progress: Double = 0.3) {
-                self.progress = progress
-            }
+        init(_ progress: Double = 0.3) {
+            self.progress = progress
+        }
 
-            private func strokeStyle(_ proxy: GeometryProxy) -> StrokeStyle {
-                StrokeStyle(lineWidth: 0.1 * min(proxy.size.width, proxy.size.height),
-                            lineCap: .round)
-            }
+        private func strokeStyle(_ proxy: GeometryProxy) -> StrokeStyle {
+            StrokeStyle(lineWidth: 0.1 * min(proxy.size.width, proxy.size.height),
+                        lineCap: .round)
+        }
 
-            public var body: some View {
-                GeometryReader { proxy in
-                    ZStack {
-                        Group {
-                            Circle()
-                                .trim(from: 0, to: 1 - CGFloat(self.sliceSize))
-                                .stroke(self.strokeGradient,
-                                        style: self.strokeStyle(proxy))
-                                .padding(.all, 10)
+        public var body: some View {
+            GeometryReader { proxy in
+                ZStack {
+                    Group {
+                        Circle()
+                            .trim(from: 0, to: 1 - CGFloat(self.sliceSize))
+                            .stroke(self.strokeGradient,
+                                    style: self.strokeStyle(proxy))
+                            .padding(.all, 10)
 
-                            Circle()
-                                .trim(from: 0, to: CGFloat(self.progress * (1 - self.sliceSize)))
-                                .stroke(Color.purple,
-                                        style: self.strokeStyle(proxy))
-                                .padding(.all, 10)
-                        }
-                        .rotationEffect(self.rotateAngle, anchor:  .center)
+                        Circle()
+                            .trim(from: 0, to: CGFloat(self.progress * (1 - self.sliceSize)))
+                            .stroke(Color.purple,
+                                    style: self.strokeStyle(proxy))
+                            .padding(.all, 10)
+                    }
+                        .rotationEffect(self.rotateAngle, anchor: .center)
                         .offset(x: 0, y: 0.1 * min(proxy.size.width, proxy.size.height))
 
-                        Text("\(self.percentageFormatter.string(from: NSNumber(value: self.progress))!)")
-                            .font(.largeTitle)
-                            .bold()
-                    }
+                    Text("\(self.percentageFormatter.string(from: NSNumber(value: self.progress))!)")
+                        .font(.largeTitle)
+                        .bold()
                 }
             }
+        }
     }
-    
+
 }
 
 private struct StepperExample: View {
@@ -858,12 +876,14 @@ private struct StepperExample: View {
 }
 
 //swiftUI层面不支持 曲线救国 去掉高亮效果
-//extension NSTextField {
-//    open override var focusRingType: NSFocusRingType {
-//        get { .none }
-//        set { }
-//    }
-//}
+#if os(macOS)
+extension NSTextField {
+    open override var focusRingType: NSFocusRingType {
+        get { .none }
+        set { }
+    }
+}
+#endif
 
 extension TextField {
     func extensionTextFieldView(roundedCornes: CGFloat, startColor: Color, endColor: Color) -> some View {
