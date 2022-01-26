@@ -10,11 +10,11 @@ import SwiftUI
 struct LayoutElement: View {
 
     @State var name: String = "HStack"
-
+//    let layouts = ["NavigationView", "TabView", "HStack/VStack/ZStack", "LazyStack", "List", "ScrollView", "ScrollView", "Table", "Grid"]
     var body: some View {
         VStack {
             switch name {
-            case "HStack":
+            case "NavigationView":
                 ScrollView {
                     HStackExample()
                 }
@@ -42,6 +42,25 @@ struct LayoutElement_Previews: PreviewProvider {
         LayoutElement(name: "List")
     }
 }
+
+struct NavigationExample: View {
+    var body: some View {
+        Text("NavigationExample")
+    }
+}
+
+struct TabViewExample: View {
+    var body: some View {
+        Text("TabViewExample")
+    }
+}
+
+struct StackExample: View {
+    var body: some View {
+        Text("StackExample")
+    }
+}
+
 
 struct HStackExample: View {
     var body: some View {

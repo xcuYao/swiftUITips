@@ -98,6 +98,7 @@ private struct TextExample: View {
                     Text(" Good").foregroundColor(Color.blue)
                 Text("UnderLine").underline(true, color: .black)
                 Text("google无法访问").foregroundColor(Color.blue).strikethrough(true, color: .black)
+                Text("[苹果官网](https://www.apple.com)")
                 Text("Bold").fontWeight(.bold)
                 Text("thin").fontWeight(.thin)
                 Text("ultraLight").fontWeight(.ultraLight)
