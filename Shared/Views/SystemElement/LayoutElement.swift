@@ -128,19 +128,29 @@ struct TabViewExample: View {
 
 struct StackExample: View {
     var body: some View {
-        VStack(alignment:  .leading) {
-            GeometryReader { geo in
+        VStack {
+            ZStack {
                 HStack {
-    //                GeometryReader { geo in
-    //                    VStack {}.frame(width: geo.size.width, height: geo.size.height, alignment: .leading).background(.green)
-    //                }
-    //                Text("aa")
                     Spacer()
-                }.frame(width: geo.size.width, height: 100, alignment: .topLeading)
-                    .background(.green)
-            }
-            HStack {
-                VStack {}.frame(width: 100, height: 100, alignment: .leading).background(.blue)
+                    Spacer()
+                }
+                HStack {
+                    Text("header").foregroundColor(.white).frame(alignment: .center)
+                }
+            }.frame(height: 100).background(.blue)
+            HStack(alignment: .top) {
+                VStack {
+                    Text("left-nav").foregroundColor(.white)
+                    Spacer()
+                }.frame(width: 80).background(.yellow)
+                VStack(alignment: .center, spacing: 10) {
+                    ForEach(0..<10) { i in
+                        HStack {
+                            Text("\(i)").foregroundColor(.black).frame(width: 100, height: 40).background(.white)
+                            Spacer()
+                        }.background(.random)
+                    }
+                }.frame(alignment: .topLeading).border(.black)
             }
             Spacer()
         }.background(.red)
