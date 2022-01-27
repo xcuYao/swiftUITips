@@ -10,22 +10,15 @@ import SwiftUI
 struct LayoutElement: View {
 
     @State var name: String = "HStack"
-//    let layouts = ["NavigationView", "TabView", "HStack/VStack/ZStack", "LazyStack", "List", "ScrollView", "ScrollView", "Table", "Grid"]
     var body: some View {
         VStack {
             switch name {
             case "NavigationView":
-                ScrollView {
-                    HStackExample()
-                }
-            case "VStack":
-                ScrollView {
-                    VStackExample()
-                }
-            case "ZStack":
-                ScrollView {
-                    ZStackExample()
-                }
+                NavigationExample()
+            case "TabView":
+                TabViewExample()
+            case "HStack/VStack/ZStack":
+                StackExample()
             case "LazyStack":
                 LazyStackExample()
             case "List":
@@ -39,25 +32,118 @@ struct LayoutElement: View {
 
 struct LayoutElement_Previews: PreviewProvider {
     static var previews: some View {
-        LayoutElement(name: "List")
+        LayoutElement(name: "HStack/VStack/ZStack")
     }
 }
 
 struct NavigationExample: View {
+    @State var presented = false
     var body: some View {
-        Text("NavigationExample")
+        Button("presented") {
+            self.presented = true
+        }.fullScreenCover(isPresented: self.$presented, onDismiss: {
+            print("Dismiss")
+        }, content: {
+            NavigationView {
+                PresentedView(index: 1)
+            }
+        })
+    }
+
+    struct PresentedView: View {
+
+        var index: Int = 0
+        @State var isActive = false
+
+        @Environment(\.presentationMode) var presentationMode
+
+        var body: some View {
+            NavigationLink(isActive: $isActive, destination: {
+                PresentedView(index: index + 1, presentationMode: _presentationMode)
+            }, label: {
+                Text("click Me")
+                    .navigationTitle("Page\(index)")
+                    .navigationBarItems(trailing: dismissButton())
+//                    .onAppear {
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                            self.isActive = !self.isActive
+//                        }
+//                    }
+            })
+        }
+
+        func dismissButton() -> some View {
+            Button("dismiss") {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
 }
 
 struct TabViewExample: View {
+
+    @State var selection: Int = 0
+
     var body: some View {
-        Text("TabViewExample")
+        TabView(selection: $selection) {
+            TabContentView(name: "Tab1")
+                .tabItem {
+                Image(systemName: "car")
+                Text("Tab1")
+            }.tag(0)
+            TabContentView(name: "Tab2")
+                .tabItem {
+                Image(systemName: "photo")
+                Text("Tab2")
+            }.tag(1)
+            TabContentView(name: "Tab3")
+                .tabItem {
+                Image(systemName: "sun.min")
+                Text("Tab3")
+            }.tag(2)
+            TabContentView(name: "Tab4")
+                .tabItem {
+                Image(systemName: "person.fill")
+                Text("Tab4")
+            }.tag(3)
+            TabContentView(name: "Tab5")
+                .tabItem {
+                Image(systemName: "globe.asia.australia")
+                Text("Tab5")
+            }.tag(4)
+            TabContentView(name: "Tab6")
+                .tabItem {
+                Image(systemName: "drop")
+                Text("Tab6")
+            }.tag(5)
+        }
+    }
+    struct TabContentView: View {
+        var name: String
+        var body: some View {
+            Text(name)
+        }
     }
 }
 
 struct StackExample: View {
     var body: some View {
-        Text("StackExample")
+        VStack(alignment:  .leading) {
+            GeometryReader { geo in
+                HStack {
+    //                GeometryReader { geo in
+    //                    VStack {}.frame(width: geo.size.width, height: geo.size.height, alignment: .leading).background(.green)
+    //                }
+    //                Text("aa")
+                    Spacer()
+                }.frame(width: geo.size.width, height: 100, alignment: .topLeading)
+                    .background(.green)
+            }
+            HStack {
+                VStack {}.frame(width: 100, height: 100, alignment: .leading).background(.blue)
+            }
+            Spacer()
+        }.background(.red)
     }
 }
 
@@ -199,11 +285,11 @@ struct ListExample: View {
 
         private func createData() {
             let datas = [WebSiteItem(id: UUID(), url: "https://www.baidu.com", title: "百度"),
-                WebSiteItem(id: UUID(), url: "https://www.qq.com", title: "腾讯"),
-                WebSiteItem(id: UUID(), url: "https://www.taobao.com", title: "阿里"),
-                WebSiteItem(id: UUID(), url: "https://www.zhihu.com", title: "知乎"),
-                WebSiteItem(id: UUID(), url: "https://www.twitter.com", title: "推特"),
-                WebSiteItem(id: UUID(), url: "https://www.google.com", title: "谷歌")]
+                         WebSiteItem(id: UUID(), url: "https://www.qq.com", title: "腾讯"),
+                         WebSiteItem(id: UUID(), url: "https://www.taobao.com", title: "阿里"),
+                         WebSiteItem(id: UUID(), url: "https://www.zhihu.com", title: "知乎"),
+                         WebSiteItem(id: UUID(), url: "https://www.twitter.com", title: "推特"),
+                         WebSiteItem(id: UUID(), url: "https://www.google.com", title: "谷歌")]
             self.webSiteItems.append(contentsOf: datas)
         }
 
@@ -321,9 +407,9 @@ struct ListExample: View {
                         Button(action: {
                             print("新建邮箱")
                         }, label: {
-                                Text("新建邮箱").font(.system(size: 16)).foregroundColor(Color.black)
-                                    .padding(.bottom, 20)
-                            }).padding(.trailing, 16)
+                            Text("新建邮箱").font(.system(size: 16)).foregroundColor(Color.black)
+                                .padding(.bottom, 20)
+                        }).padding(.trailing, 16)
                     }.frame(height: 90)
                         .background(RoundedRectangle(cornerRadius: 0).fill(Color.white))
                         .border(width: 1, edges: [.top], color: Color(hex: "#DCE0E0"))
@@ -337,11 +423,11 @@ struct ListExample: View {
                             Button(action: {
                                 print("新邮件")
                             }, label: {
-                                    Image(systemName: "square.and.pencil")
-                                        .font(.system(size: 22, weight: Font.Weight.regular))
-                                        .foregroundColor(.black)
-                                        .padding(.trailing, 16)
-                                })
+                                Image(systemName: "square.and.pencil")
+                                    .font(.system(size: 22, weight: Font.Weight.regular))
+                                    .foregroundColor(.black)
+                                    .padding(.trailing, 16)
+                            })
                         }.padding(.bottom, 20)
                     }.frame(height: 90)
                         .background(RoundedRectangle(cornerRadius: 0).fill(Color.white))

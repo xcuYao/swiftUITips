@@ -13,6 +13,14 @@ extension View {
     }
 }
 
+#if os(macOS)
+extension View {
+    func navigationBarTitle(_ title: String) -> some View {
+        self
+    }
+}
+#endif
+
 struct EdgeBorder: Shape {
 
     var width: CGFloat
