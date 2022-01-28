@@ -38,7 +38,9 @@ struct SystemElement: View {
             }
             Section(header: Text("功能组件")) {
                 ForEach(function, id: \.self) { data in
-                    Text(data)
+                    NavigationLink(data, destination: {
+                        FunctionElement(name: data)
+                    })
                 }
             }
             Section(header: Text("动画图形")) {

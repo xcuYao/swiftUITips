@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD7487E227A44866008731B8 /* FunctionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E127A44866008731B8 /* FunctionElement.swift */; };
+		BD7487E327A44866008731B8 /* FunctionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E127A44866008731B8 /* FunctionElement.swift */; };
 		BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDCEF7E4279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */; };
@@ -32,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD7487E127A44866008731B8 /* FunctionElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionElement.swift; sourceTree = "<group>"; };
 		BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipApp.swift; sourceTree = "<group>"; };
 		BDCEF7D5279DA8EC008EAF50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 			children = (
 				BDCEF7FC279DA94F008EAF50 /* BasicsElement.swift */,
 				BDCEF7FD279DA94F008EAF50 /* LayoutElement.swift */,
+				BD7487E127A44866008731B8 /* FunctionElement.swift */,
 			);
 			path = SystemElement;
 			sourceTree = "<group>";
@@ -235,6 +239,7 @@
 				BDCEF7F4279DA947008EAF50 /* ColorExtension.swift in Sources */,
 				BDCEF7E6279DA8ED008EAF50 /* ContentView.swift in Sources */,
 				BDCEF800279DA94F008EAF50 /* Tab1Nav1.swift in Sources */,
+				BD7487E227A44866008731B8 /* FunctionElement.swift in Sources */,
 				BDCEF808279DA94F008EAF50 /* LayoutElement.swift in Sources */,
 				BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */,
 				BDCEF7FE279DA94F008EAF50 /* Tab2.swift in Sources */,
@@ -252,6 +257,7 @@
 				BDCEF7F5279DA947008EAF50 /* ColorExtension.swift in Sources */,
 				BDCEF7E7279DA8ED008EAF50 /* ContentView.swift in Sources */,
 				BDCEF801279DA94F008EAF50 /* Tab1Nav1.swift in Sources */,
+				BD7487E327A44866008731B8 /* FunctionElement.swift in Sources */,
 				BDCEF809279DA94F008EAF50 /* LayoutElement.swift in Sources */,
 				BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */,
 				BDCEF7FF279DA94F008EAF50 /* Tab2.swift in Sources */,
