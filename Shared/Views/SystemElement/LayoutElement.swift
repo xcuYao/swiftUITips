@@ -23,6 +23,10 @@ struct LayoutElement: View {
                 LazyStackExample()
             case "List":
                 ListExample()
+            case "ScrollView":
+                ScrollViewExample()
+            case "Grid":
+                GridExample()
             default:
                 Text("Default")
             }
@@ -32,7 +36,7 @@ struct LayoutElement: View {
 
 struct LayoutElement_Previews: PreviewProvider {
     static var previews: some View {
-        LayoutElement(name: "HStack/VStack/ZStack")
+        LayoutElement(name: "Grid")
     }
 }
 
@@ -138,17 +142,22 @@ struct StackExample: View {
                     Text("header").foregroundColor(.white).frame(alignment: .center)
                 }
             }.frame(height: 100).background(.blue)
-            HStack(alignment: .top) {
-                VStack {
+            HStack(alignment: .top, spacing: 10) {
+                ZStack(alignment: .center) {
+                    VStack {
+                        Spacer()
+                        Spacer()
+                    }
                     Text("left-nav").foregroundColor(.white)
-                    Spacer()
-                }.frame(width: 80).background(.yellow)
+                }.frame(width: 80).background(.yellow).padding(.leading, 10)
                 VStack(alignment: .center, spacing: 10) {
-                    ForEach(0..<10) { i in
-                        HStack {
-                            Text("\(i)").foregroundColor(.black).frame(width: 100, height: 40).background(.white)
-                            Spacer()
-                        }.background(.random)
+                    ScrollView {
+                        ForEach(0..<100) { i in
+                            HStack {
+                                Text("\(i)").foregroundColor(.black).frame(width: 100, height: 40).background(.white)
+                                Spacer()
+                            }.background(.random)
+                        }
                     }
                 }.frame(alignment: .topLeading).border(.black)
             }
@@ -157,82 +166,28 @@ struct StackExample: View {
     }
 }
 
-
-struct HStackExample: View {
-    var body: some View {
-        VStack {
-            HStack(alignment: .center, spacing: 20) {
-                ForEach(0...5, id: \.self) { i in
-                    HStack { Text(String(i)).foregroundColor(.white) }.frame(width: 40, height: 40, alignment: .center).background(.red).cornerRadius(10)
-                }
-                Spacer()
-            }.padding(20).background(Color.green)
-            HStack(alignment: .center, spacing: 20) {
-                Spacer()
-                ForEach(0...5, id: \.self) { i in
-                    HStack { Text(String(i)).foregroundColor(.white) }.frame(width: 40, height: 40, alignment: .center).background(.red).cornerRadius(10)
-                }
-            }.padding(20).background(Color.green)
-            Spacer()
-        }
-    }
-}
-
-struct VStackExample: View {
-    var body: some View {
-        HStack {
-            VStack(alignment: .center, spacing: 20) {
-                ForEach(0...5, id: \.self) { i in
-                    HStack { Text(String(i)).foregroundColor(.white) }.frame(width: 40, height: 40, alignment: .center).background(.red).cornerRadius(10)
-                }
-                Spacer()
-            }.padding(20).background(Color.green)
-            VStack(alignment: .center, spacing: 20) {
-                Spacer()
-                ForEach(0...5, id: \.self) { i in
-                    HStack { Text(String(i)).foregroundColor(.white) }.frame(width: 40, height: 40, alignment: .center).background(.red).cornerRadius(10)
-                }
-            }.padding(20).background(Color.green)
-            Spacer()
-        }
-    }
-}
-
-struct ZStackExample: View {
-    var body: some View {
-        HStack {
-            VStack {
-                ZStack() {
-                    ForEach(0...5, id: \.self) { i in
-                        HStack { Text(String(i)).foregroundColor(.white) }.frame(width: 40, height: 40, alignment: .center).background(.random).cornerRadius(10).offset(x: CGFloat(i * 10), y: CGFloat(i * 30))
-                    }
-                    Spacer()
-                }.frame(width: 100, height: 300, alignment: .top).padding(20).background(Color.green).clipped()
-            }
-            Spacer()
-        }
-    }
-}
-
 struct LazyStackExample: View {
     var body: some View {
-        HStack(alignment: .top) {
-            ScrollView(.horizontal) {
-                LazyHStack {
-                    ForEach(0...10000, id: \.self) {
-                        Text("Column \($0)")
+        VStack {
+            Text("1w条数据")
+            HStack(alignment: .top) {
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        ForEach(0...10000, id: \.self) {
+                            Text("Column \($0)")
+                        }
                     }
-                }
-            }.frame(height: 40, alignment: .leading)
-            ScrollView(.vertical) {
-                LazyVStack {
-                    ForEach(0...10000, id: \.self) {
-                        Text("Row \($0)")
+                }.frame(height: 40, alignment: .leading)
+                ScrollView(.vertical) {
+                    LazyVStack {
+                        ForEach(0...10000, id: \.self) {
+                            Text("Row \($0)")
+                        }
                     }
-                }
-            }.frame(width: 100, alignment: .leading)
-            Spacer()
-        }.padding(20)
+                }.frame(width: 100, alignment: .leading)
+                Spacer()
+            }.padding(20)
+        }
     }
 }
 
@@ -493,4 +448,60 @@ struct ListExample: View {
 
     }
 
+}
+
+struct ScrollViewExample: View {
+    var body: some View {
+        VStack {
+            ScrollView(.horizontal, showsIndicators: true) {
+                HStack(spacing: 20) {
+                    ForEach(0..<30) {
+                        Text("\($0)")
+                            .foregroundColor(.white)
+                            .frame(width: 32, height: 32)
+                            .background(.black)
+                            .cornerRadius(16)
+                    }
+                }.padding(20)
+            }
+            ScrollView([.horizontal, .vertical]) {
+                VStack(spacing: 10) {
+                    ForEach(0..<30) { row in
+                        HStack {
+                            ForEach(0..<30) { column in
+                                Text("\(row),\(column)")
+                                    .foregroundColor(.white)
+                                    .frame(width: 64, height: 64)
+                                    .background(.black)
+                                    .cornerRadius(32)
+                            }
+                        }
+                    }
+                }.frame(maxWidth: .infinity)
+            }
+        }
+    }
+}
+
+// https://www.appcoda.com/learnswiftui/swiftui-gridlayout.html
+struct GridExample: View {
+    
+    private var symbols = ["keyboard", "hifispeaker.fill", "printer.fill", "tv.fill", "desktopcomputer", "headphones", "tv.music.note", "mic", "plus.bubble", "video"]
+    private var threeColumnGrid = [GridItem(.fixed(50)), GridItem(.flexible()), GridItem(.flexible())]
+//    private var columnGrid: [GridItem] = Array(repeating: .init(.flexible()), count: 6)
+    
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: threeColumnGrid) {
+                ForEach(0...9999, id:\.self) {
+                    Image(systemName: symbols[$0 % symbols.count])
+                        .font(.system(size: 18))
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
+                        .background(.random)
+                        .cornerRadius(10)
+                }
+            }
+        }
+        Text("")
+    }
 }

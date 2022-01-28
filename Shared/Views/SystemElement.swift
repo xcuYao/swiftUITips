@@ -13,7 +13,7 @@ struct SystemElement: View {
 
     //sections 基础组件 容器类组件 功能组件 动画图形 其他
     let basics = ["Text", "Button", "Image", "Toggle", "Label", "Slider", "TextField", "Picker", "DatePicker", "ProgressView", "Stepper"]
-    let layouts = ["NavigationView", "TabView", "HStack/VStack/ZStack", "LazyStack", "List", "ScrollView", "Table", "Grid"]
+    let layouts = ["NavigationView", "TabView", "HStack/VStack/ZStack", "LazyStack", "List", "ScrollView", "Grid"]
     let function = ["Alert", "Sheet", "Popover", "Gesture", "Map", "WebView"]
     let animation = ["", "", ""]
     let other = ["Color", "Font", "Spacer", "Divider", "Gradient", "ViewBuilder", "Timer", "GeometryReader"]
