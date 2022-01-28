@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FunctionElement: View {
-    
+
     @State var name: String = "Alert"
     var body: some View {
         switch name {
@@ -31,9 +31,9 @@ struct FunctionElement: View {
 }
 
 struct AlertExample: View {
-    
+
     @State var alertShow = false
-    
+
     var body: some View {
         VStack(spacing: 20) {
             Button("Alert1", action: {
@@ -44,9 +44,9 @@ struct AlertExample: View {
             Button("Alert2", action: {
                 alertShow = true
             }).alert("Alert2", isPresented: $alertShow) {
-                Button("Button1", action: {})
-                Button("Button2", action: {})
-                Button("Button3", action: {})
+                Button("Button1", action: { })
+                Button("Button2", action: { })
+                Button("Button3", action: { })
             }
             Button("Alert3", action: {
                 alertShow = true
@@ -58,9 +58,54 @@ struct AlertExample: View {
 }
 
 struct SheetExample: View {
+
+    @State var sheetShow = false
+    @State var sheetShow2 = false
+
     var body: some View {
-        Text("Sheet")
+
+        VStack(spacing: 20) {
+            Button("Show Sheet") {
+                sheetShow = true
+            }.frame(width: 120, height: 40)
+                .background(Color.random)
+                .foregroundColor(.white)
+                .cornerRadius(20)
+                .sheet(isPresented: $sheetShow, onDismiss: {
+                print("dismiss")
+            }, content: {
+                showView(name: "Just show")
+            })
+            Button("Full Screen") {
+                sheetShow2 = true
+            }.frame(width: 120, height: 40)
+                .background(Color.random)
+                .foregroundColor(.white)
+                .cornerRadius(20)
+                .fullScreenCover(isPresented: $sheetShow2, onDismiss: {
+                    print("dismiss")
+                }, content: {
+                    showView(name: "FullScreen")
+                })
+        }
     }
+
+    struct showView: View {
+        var name: String
+        @Environment(\.presentationMode) var presentationMode
+        var body: some View {
+            VStack {
+                Text(name)
+                Button("dismiss", action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) .foregroundColor(.white)
+                    .frame(width: 120, height: 40)
+                    .background(.random)
+                    .cornerRadius(20)
+            }
+        }
+    }
+
 }
 
 struct PopoverExample: View {
@@ -89,6 +134,6 @@ struct WebViewExample: View {
 
 struct FunctionElement_Previews: PreviewProvider {
     static var previews: some View {
-        FunctionElement()
+        FunctionElement(name: "Sheet")
     }
 }
