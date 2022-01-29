@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import WebKit
 
 struct FunctionElement: View {
 
@@ -165,9 +166,16 @@ struct MapExample: View {
     
 }
 
-struct WebViewExample: View {
-    var body: some View {
-        Text("WebView")
+struct WebViewExample: UIViewRepresentable {
+    
+    let request: URLRequest = URLRequest(url: URL(string: "https://www.baidu.com")!)
+    
+    func makeUIView(context: Context) -> WKWebView {
+        return WKWebView()
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        uiView.load(request)
     }
 }
 
