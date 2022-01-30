@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BasicsElement: View {
 
-    @State var name: String = "Text"
+    var name: String = "Text"
 
     var body: some View {
         #if os(macOS)
@@ -77,7 +77,7 @@ struct BasicsElement_Previews: PreviewProvider {
 
 private struct TextExample: View {
 
-    @State var actionText = "点我变化"
+    @State private var actionText = "点我变化"
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -269,8 +269,8 @@ private struct ImageExample: View {
 
 private struct ToggleExample: View {
 
-    @State var isOn = true
-    @State var flipped = false
+    @State private var isOn = true
+    @State private var flipped = false
     
     private var outPadding: Double {
         #if os(macOS)
@@ -457,7 +457,7 @@ private struct LabelExample: View {
 
 private struct SliderExample: View {
 
-    @State var value: Double = 5
+    @State private var value: Double = 5
     var body: some View {
         VStack(alignment: .center) {
             VStack {
@@ -486,7 +486,7 @@ private struct SliderExample: View {
 }
 
 private struct TextFieldExample: View {
-    @State var value: String = ""
+    @State private var value: String = ""
     @State private var label = "Currency (USD)"
     @State private var myMoney: Double? = 300.0
 
@@ -579,10 +579,10 @@ private struct TextFieldExample: View {
 }
 
 private struct PickerExample: View {
-    @State var selection = 0
+    @State private var selection = 0
 
     var devices = ["iPhone", "iPad", "Mac", "iWatch"]
-    @State var selectDevice = "iPhone"
+    @State private var selectDevice = "iPhone"
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -605,7 +605,7 @@ private struct PickerExample: View {
 }
 
 private struct DatePickerExample: View {
-    @State var selection = Date()
+    @State private var selection = Date()
     let beginDate = Date()
     var endDate = Date()
     init() {
@@ -846,8 +846,8 @@ private struct ProgressViewExample: View {
 }
 
 private struct StepperExample: View {
-    @State var value = 20
-    @State var value2 = 100
+    @State private var value = 20
+    @State private var value2 = 100
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {

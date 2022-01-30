@@ -11,7 +11,7 @@ import WebKit
 
 struct FunctionElement: View {
 
-    @State var name: String = "Alert"
+    var name: String = "Alert"
     var body: some View {
         switch name {
         case "Alert":
@@ -34,7 +34,7 @@ struct FunctionElement: View {
 
 struct AlertExample: View {
 
-    @State var alertShow = false
+    @State private var alertShow = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -61,8 +61,8 @@ struct AlertExample: View {
 
 struct SheetExample: View {
 
-    @State var sheetShow = false
-    @State var sheetShow2 = false
+    @State private var sheetShow = false
+    @State private var sheetShow2 = false
 
     var body: some View {
 
@@ -112,7 +112,7 @@ struct SheetExample: View {
 
 struct PopoverExample: View {
     // 个人感觉很难用 期待好用的三方库
-    @State var popoverShow = false
+    @State private var popoverShow = false
     var body: some View {
 //        VStack {
             Button("Popover") {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AnimateExample: View {
 
-    @State var name: String
+    var name: String
 
     var body: some View {
         switch name {

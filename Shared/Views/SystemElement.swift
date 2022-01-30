@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SystemElement: View {
 
-    @State var select = 0
+    @State private var select = 0
 
     //sections 基础组件 容器类组件 功能组件 动画图形 其他
     let basics = ["Text", "Button", "Image", "Toggle", "Label", "Slider", "TextField", "Picker", "DatePicker", "ProgressView", "Stepper"]

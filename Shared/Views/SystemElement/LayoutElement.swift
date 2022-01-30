@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LayoutElement: View {
 
-    @State var name: String = "HStack"
+    var name: String = "HStack"
     var body: some View {
         VStack {
             switch name {
@@ -41,7 +41,7 @@ struct LayoutElement_Previews: PreviewProvider {
 }
 
 struct NavigationExample: View {
-    @State var presented = false
+    @State private var presented = false
     var body: some View {
         Button("presented") {
             self.presented = true
@@ -57,7 +57,7 @@ struct NavigationExample: View {
     struct PresentedView: View {
 
         var index: Int = 0
-        @State var isActive = false
+        @State private var isActive = false
 
         @Environment(\.presentationMode) var presentationMode
 
@@ -86,7 +86,7 @@ struct NavigationExample: View {
 
 struct TabViewExample: View {
 
-    @State var selection: Int = 0
+    @State private var selection: Int = 0
 
     var body: some View {
         TabView(selection: $selection) {
@@ -207,8 +207,8 @@ struct ListExample: View {
     }
 
     struct ListExampleItem1: View {
-        @State var selection: Set<UUID> = []
-        @State var webSiteItems: [WebSiteItem] = []
+        @State private var selection: Set<UUID> = []
+        @State private var webSiteItems: [WebSiteItem] = []
 
         private var showItems: String {
             webSiteItems.map { String($0.title) }.joined(separator: ",")
@@ -276,10 +276,10 @@ struct ListExample: View {
 
     struct ListExampleItem2: View {
 
-        @State var datas: [ItemData] = []
-        @State var selectDataIds: Set<UUID> = []
-        @State var editMode = EditMode.inactive
-        @State var editing: Bool = false
+        @State private var datas: [ItemData] = []
+        @State private var selectDataIds: Set<UUID> = []
+        @State private var editMode = EditMode.inactive
+        @State private var editing: Bool = false
 
         var body: some View {
             ZStack(alignment: .topLeading) {
