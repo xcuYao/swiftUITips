@@ -23,6 +23,8 @@ struct AnimateExample: View {
             TimelineViewExample()
         case "Canvas":
             CanvasExample()
+        case "SwiftUI-Lab":
+            LabExample()
         default:
             Text("AnimateExample")
         }
@@ -225,6 +227,7 @@ struct PathsExample: View {
 struct GeometryEffectExample: View {
     var body: some View {
         Text("GeometryEffectExample")
+//            .modifier(SkewEfect(skewValue: 0.5))
     }
 }
 
@@ -248,6 +251,6 @@ struct CanvasExample: View {
 
 struct AnimateExample_Previews: PreviewProvider {
     static var previews: some View {
-        AnimateExample(name: "Paths")
+        AnimateExample(name: "GeometryEffect")
     }
 }

@@ -21,6 +21,29 @@ extension View {
 }
 #endif
 
+public extension View {
+//    func offset(x: CGFloat, y: CGFloat) -> some View {
+//        return modifier(_OffsetEffect(offset: CGSize(width: x, height: y)))
+//    }
+//
+//    func offset(_ offset: CGSize) -> some View {
+//        return modifier(_OffsetEffect(offset: offset))
+//    }
+}
+
+struct _OffsetEffect: GeometryEffect {
+    var offset: CGSize
+    
+    var animatableData: CGSize.AnimatableData {
+        get { CGSize.AnimatableData(offset.width, offset.height) }
+        set { offset = CGSize(width: newValue.first, height: newValue.second) }
+    }
+
+    public func effectValue(size: CGSize) -> ProjectionTransform {
+        return ProjectionTransform(CGAffineTransform(translationX: offset.width, y: offset.height))
+    }
+}
+
 struct EdgeBorder: Shape {
 
     var width: CGFloat

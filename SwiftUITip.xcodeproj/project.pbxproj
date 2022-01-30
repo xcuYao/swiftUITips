@@ -13,6 +13,8 @@
 		BD7487E627A6843C008731B8 /* AnimateExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E427A6843C008731B8 /* AnimateExample.swift */; };
 		BD7487E927A6A206008731B8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E827A6A206008731B8 /* Button.swift */; };
 		BD7487EA27A6A206008731B8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E827A6A206008731B8 /* Button.swift */; };
+		BD7487EF27A6D963008731B8 /* LabExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487EE27A6D963008731B8 /* LabExample.swift */; };
+		BD7487F027A6D963008731B8 /* LabExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487EE27A6D963008731B8 /* LabExample.swift */; };
 		BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDCEF7E4279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */; };
@@ -41,6 +43,7 @@
 		BD7487E127A44866008731B8 /* FunctionElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionElement.swift; sourceTree = "<group>"; };
 		BD7487E427A6843C008731B8 /* AnimateExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateExample.swift; sourceTree = "<group>"; };
 		BD7487E827A6A206008731B8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		BD7487EE27A6D963008731B8 /* LabExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabExample.swift; sourceTree = "<group>"; };
 		BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipApp.swift; sourceTree = "<group>"; };
 		BDCEF7D5279DA8EC008EAF50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 				BDCEF7FD279DA94F008EAF50 /* LayoutElement.swift */,
 				BD7487E127A44866008731B8 /* FunctionElement.swift */,
 				BD7487E427A6843C008731B8 /* AnimateExample.swift */,
+				BD7487EE27A6D963008731B8 /* LabExample.swift */,
 			);
 			path = SystemElement;
 			sourceTree = "<group>";
@@ -254,6 +258,7 @@
 			files = (
 				BDCEF7F4279DA947008EAF50 /* ColorExtension.swift in Sources */,
 				BDCEF7E6279DA8ED008EAF50 /* ContentView.swift in Sources */,
+				BD7487EF27A6D963008731B8 /* LabExample.swift in Sources */,
 				BD7487E527A6843C008731B8 /* AnimateExample.swift in Sources */,
 				BDCEF800279DA94F008EAF50 /* Tab1Nav1.swift in Sources */,
 				BD7487E227A44866008731B8 /* FunctionElement.swift in Sources */,
@@ -274,6 +279,7 @@
 			files = (
 				BDCEF7F5279DA947008EAF50 /* ColorExtension.swift in Sources */,
 				BDCEF7E7279DA8ED008EAF50 /* ContentView.swift in Sources */,
+				BD7487F027A6D963008731B8 /* LabExample.swift in Sources */,
 				BD7487E627A6843C008731B8 /* AnimateExample.swift in Sources */,
 				BDCEF801279DA94F008EAF50 /* Tab1Nav1.swift in Sources */,
 				BD7487E327A44866008731B8 /* FunctionElement.swift in Sources */,
