@@ -15,6 +15,8 @@
 		BD7487EA27A6A206008731B8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E827A6A206008731B8 /* Button.swift */; };
 		BD7487EF27A6D963008731B8 /* LabExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487EE27A6D963008731B8 /* LabExample.swift */; };
 		BD7487F027A6D963008731B8 /* LabExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487EE27A6D963008731B8 /* LabExample.swift */; };
+		BD7487F427A6EEFE008731B8 /* DataFlowExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */; };
+		BD7487F527A6EEFE008731B8 /* DataFlowExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */; };
 		BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDCEF7E4279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */; };
@@ -25,14 +27,12 @@
 		BDCEF7E9279DA8ED008EAF50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDCEF7D6279DA8ED008EAF50 /* Assets.xcassets */; };
 		BDCEF7F4279DA947008EAF50 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F3279DA947008EAF50 /* ColorExtension.swift */; };
 		BDCEF7F5279DA947008EAF50 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F3279DA947008EAF50 /* ColorExtension.swift */; };
-		BDCEF7FE279DA94F008EAF50 /* Tab2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F7279DA94F008EAF50 /* Tab2.swift */; };
-		BDCEF7FF279DA94F008EAF50 /* Tab2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F7279DA94F008EAF50 /* Tab2.swift */; };
-		BDCEF800279DA94F008EAF50 /* Tab1Nav1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F8279DA94F008EAF50 /* Tab1Nav1.swift */; };
-		BDCEF801279DA94F008EAF50 /* Tab1Nav1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F8279DA94F008EAF50 /* Tab1Nav1.swift */; };
+		BDCEF7FE279DA94F008EAF50 /* DataFlowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F7279DA94F008EAF50 /* DataFlowSection.swift */; };
+		BDCEF7FF279DA94F008EAF50 /* DataFlowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F7279DA94F008EAF50 /* DataFlowSection.swift */; };
 		BDCEF802279DA94F008EAF50 /* Tab3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F9279DA94F008EAF50 /* Tab3.swift */; };
 		BDCEF803279DA94F008EAF50 /* Tab3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F9279DA94F008EAF50 /* Tab3.swift */; };
-		BDCEF804279DA94F008EAF50 /* SystemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FA279DA94F008EAF50 /* SystemElement.swift */; };
-		BDCEF805279DA94F008EAF50 /* SystemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FA279DA94F008EAF50 /* SystemElement.swift */; };
+		BDCEF804279DA94F008EAF50 /* SystemElementSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FA279DA94F008EAF50 /* SystemElementSection.swift */; };
+		BDCEF805279DA94F008EAF50 /* SystemElementSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FA279DA94F008EAF50 /* SystemElementSection.swift */; };
 		BDCEF806279DA94F008EAF50 /* BasicsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FC279DA94F008EAF50 /* BasicsElement.swift */; };
 		BDCEF807279DA94F008EAF50 /* BasicsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FC279DA94F008EAF50 /* BasicsElement.swift */; };
 		BDCEF808279DA94F008EAF50 /* LayoutElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FD279DA94F008EAF50 /* LayoutElement.swift */; };
@@ -44,6 +44,7 @@
 		BD7487E427A6843C008731B8 /* AnimateExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateExample.swift; sourceTree = "<group>"; };
 		BD7487E827A6A206008731B8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		BD7487EE27A6D963008731B8 /* LabExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabExample.swift; sourceTree = "<group>"; };
+		BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowExample.swift; sourceTree = "<group>"; };
 		BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipApp.swift; sourceTree = "<group>"; };
 		BDCEF7D5279DA8EC008EAF50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,10 +53,9 @@
 		BDCEF7E1279DA8ED008EAF50 /* SwiftUITip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUITip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDCEF7E3279DA8ED008EAF50 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		BDCEF7F3279DA947008EAF50 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		BDCEF7F7279DA94F008EAF50 /* Tab2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab2.swift; sourceTree = "<group>"; };
-		BDCEF7F8279DA94F008EAF50 /* Tab1Nav1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab1Nav1.swift; sourceTree = "<group>"; };
+		BDCEF7F7279DA94F008EAF50 /* DataFlowSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFlowSection.swift; sourceTree = "<group>"; };
 		BDCEF7F9279DA94F008EAF50 /* Tab3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab3.swift; sourceTree = "<group>"; };
-		BDCEF7FA279DA94F008EAF50 /* SystemElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemElement.swift; sourceTree = "<group>"; };
+		BDCEF7FA279DA94F008EAF50 /* SystemElementSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemElementSection.swift; sourceTree = "<group>"; };
 		BDCEF7FC279DA94F008EAF50 /* BasicsElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicsElement.swift; sourceTree = "<group>"; };
 		BDCEF7FD279DA94F008EAF50 /* LayoutElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +84,14 @@
 				BD7487E827A6A206008731B8 /* Button.swift */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		BD7487F227A6EECB008731B8 /* DataFlow */ = {
+			isa = PBXGroup;
+			children = (
+				BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */,
+			);
+			path = DataFlow;
 			sourceTree = "<group>";
 		};
 		BDCEF7CE279DA8EB008EAF50 = {
@@ -137,11 +145,11 @@
 		BDCEF7F6279DA94F008EAF50 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BDCEF7F7279DA94F008EAF50 /* Tab2.swift */,
-				BDCEF7F8279DA94F008EAF50 /* Tab1Nav1.swift */,
+				BDCEF7F7279DA94F008EAF50 /* DataFlowSection.swift */,
 				BDCEF7F9279DA94F008EAF50 /* Tab3.swift */,
-				BDCEF7FA279DA94F008EAF50 /* SystemElement.swift */,
+				BDCEF7FA279DA94F008EAF50 /* SystemElementSection.swift */,
 				BDCEF7FB279DA94F008EAF50 /* SystemElement */,
+				BD7487F227A6EECB008731B8 /* DataFlow */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,16 +268,16 @@
 				BDCEF7E6279DA8ED008EAF50 /* ContentView.swift in Sources */,
 				BD7487EF27A6D963008731B8 /* LabExample.swift in Sources */,
 				BD7487E527A6843C008731B8 /* AnimateExample.swift in Sources */,
-				BDCEF800279DA94F008EAF50 /* Tab1Nav1.swift in Sources */,
 				BD7487E227A44866008731B8 /* FunctionElement.swift in Sources */,
 				BDCEF808279DA94F008EAF50 /* LayoutElement.swift in Sources */,
 				BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */,
-				BDCEF7FE279DA94F008EAF50 /* Tab2.swift in Sources */,
+				BDCEF7FE279DA94F008EAF50 /* DataFlowSection.swift in Sources */,
 				BDCEF7E4279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */,
 				BDCEF806279DA94F008EAF50 /* BasicsElement.swift in Sources */,
+				BD7487F427A6EEFE008731B8 /* DataFlowExample.swift in Sources */,
 				BDCEF802279DA94F008EAF50 /* Tab3.swift in Sources */,
 				BD7487E927A6A206008731B8 /* Button.swift in Sources */,
-				BDCEF804279DA94F008EAF50 /* SystemElement.swift in Sources */,
+				BDCEF804279DA94F008EAF50 /* SystemElementSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,16 +289,16 @@
 				BDCEF7E7279DA8ED008EAF50 /* ContentView.swift in Sources */,
 				BD7487F027A6D963008731B8 /* LabExample.swift in Sources */,
 				BD7487E627A6843C008731B8 /* AnimateExample.swift in Sources */,
-				BDCEF801279DA94F008EAF50 /* Tab1Nav1.swift in Sources */,
 				BD7487E327A44866008731B8 /* FunctionElement.swift in Sources */,
 				BDCEF809279DA94F008EAF50 /* LayoutElement.swift in Sources */,
 				BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */,
-				BDCEF7FF279DA94F008EAF50 /* Tab2.swift in Sources */,
+				BDCEF7FF279DA94F008EAF50 /* DataFlowSection.swift in Sources */,
 				BDCEF7E5279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */,
 				BDCEF807279DA94F008EAF50 /* BasicsElement.swift in Sources */,
+				BD7487F527A6EEFE008731B8 /* DataFlowExample.swift in Sources */,
 				BDCEF803279DA94F008EAF50 /* Tab3.swift in Sources */,
 				BD7487EA27A6A206008731B8 /* Button.swift in Sources */,
-				BDCEF805279DA94F008EAF50 /* SystemElement.swift in Sources */,
+				BDCEF805279DA94F008EAF50 /* SystemElementSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

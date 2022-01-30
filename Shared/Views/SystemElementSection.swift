@@ -1,5 +1,5 @@
 //
-//  SystemElement.swift
+//  SystemElementSection.swift
 //  SwiftUITip
 //
 //  Created by yaoning on 2022/1/10.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SystemElement: View {
+struct SystemElementSection: View {
 
     @State private var select = 0
 
@@ -63,6 +63,6 @@ struct SystemElement: View {
 
 struct Tab1_Previews: PreviewProvider {
     static var previews: some View {
-        SystemElement()
+        SystemElementSection()
     }
 }

@@ -13,13 +13,13 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $selection) {
-                SystemElement()
+                SystemElementSection()
                     .tabItem({
                         Image(systemName: "apps.iphone")
                         Text("系统组件")
                     })
                     .tag(0)
-                Tab2()
+                DataFlowSection()
                     .tabItem({
                         Image(systemName: "rectangle.leadinghalf.filled")
                         Text("状态管理")
