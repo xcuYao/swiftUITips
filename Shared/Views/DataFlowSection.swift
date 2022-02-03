@@ -17,7 +17,6 @@ struct DataFlowSection: View {
 
     @State private var select = 0
 
-    //sections 基础组件 容器类组件 功能组件 动画图形 其他
     let dataFlows = ["@State", "@Published", "@ObservedObject", "@StateObject", "@EnvironmentObject", "@Environment", "@Binding", "@GestureState"]
 
     var body: some View {
@@ -26,6 +25,7 @@ struct DataFlowSection: View {
                 ForEach(dataFlows, id: \.self) { data in
                     NavigationLink(destination: {
                         DataFlowExample(name: data)
+                            .navigationBarTitle(Text(data), displayMode: .inline)
                     }) {
                         Text(data)
                     }

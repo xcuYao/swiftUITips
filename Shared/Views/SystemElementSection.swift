@@ -11,12 +11,11 @@ struct SystemElementSection: View {
 
     @State private var select = 0
 
-    //sections 基础组件 容器类组件 功能组件 动画图形 其他
+    //sections 基础组件 容器类组件 功能组件 动画图形
     let basics = ["Text", "Button", "Image", "Toggle", "Label", "Slider", "TextField", "Picker", "DatePicker", "ProgressView", "Stepper"]
     let layouts = ["NavigationView", "TabView", "HStack/VStack/ZStack", "LazyStack", "List", "ScrollView", "Grid"]
     let function = ["Alert", "Sheet", "Popover", "Map", "WebView"]
     let animation = ["Paths", "SwiftUI-Lab"]
-//    let other = ["Color", "Font", "Spacer", "Divider", "Gradient", "ViewBuilder", "Timer", "GeometryReader"]
 
     var body: some View {
         List() {
@@ -52,11 +51,6 @@ struct SystemElementSection: View {
                     })
                 }
             }
-//            Section(header: Text("其他")) {
-//                ForEach(other, id: \.self) { data in
-//                    Text(data)
-//                }
-//            }
         }
     }
 }
