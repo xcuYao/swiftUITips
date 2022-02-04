@@ -17,6 +17,7 @@
 		BD7487F027A6D963008731B8 /* LabExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487EE27A6D963008731B8 /* LabExample.swift */; };
 		BD7487F427A6EEFE008731B8 /* DataFlowExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */; };
 		BD7487F527A6EEFE008731B8 /* DataFlowExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */; };
+		BD7487FA27AD5EFA008731B8 /* ThirdPartLibExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */; };
 		BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDCEF7E4279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */; };
@@ -29,8 +30,8 @@
 		BDCEF7F5279DA947008EAF50 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F3279DA947008EAF50 /* ColorExtension.swift */; };
 		BDCEF7FE279DA94F008EAF50 /* DataFlowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F7279DA94F008EAF50 /* DataFlowSection.swift */; };
 		BDCEF7FF279DA94F008EAF50 /* DataFlowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F7279DA94F008EAF50 /* DataFlowSection.swift */; };
-		BDCEF802279DA94F008EAF50 /* Tab3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F9279DA94F008EAF50 /* Tab3.swift */; };
-		BDCEF803279DA94F008EAF50 /* Tab3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F9279DA94F008EAF50 /* Tab3.swift */; };
+		BDCEF802279DA94F008EAF50 /* ThirdPartLibSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F9279DA94F008EAF50 /* ThirdPartLibSection.swift */; };
+		BDCEF803279DA94F008EAF50 /* ThirdPartLibSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7F9279DA94F008EAF50 /* ThirdPartLibSection.swift */; };
 		BDCEF804279DA94F008EAF50 /* SystemElementSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FA279DA94F008EAF50 /* SystemElementSection.swift */; };
 		BDCEF805279DA94F008EAF50 /* SystemElementSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FA279DA94F008EAF50 /* SystemElementSection.swift */; };
 		BDCEF806279DA94F008EAF50 /* BasicsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FC279DA94F008EAF50 /* BasicsElement.swift */; };
@@ -45,6 +46,7 @@
 		BD7487E827A6A206008731B8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		BD7487EE27A6D963008731B8 /* LabExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabExample.swift; sourceTree = "<group>"; };
 		BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowExample.swift; sourceTree = "<group>"; };
+		BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartLibExample.swift; sourceTree = "<group>"; };
 		BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipApp.swift; sourceTree = "<group>"; };
 		BDCEF7D5279DA8EC008EAF50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,7 +56,7 @@
 		BDCEF7E3279DA8ED008EAF50 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		BDCEF7F3279DA947008EAF50 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		BDCEF7F7279DA94F008EAF50 /* DataFlowSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFlowSection.swift; sourceTree = "<group>"; };
-		BDCEF7F9279DA94F008EAF50 /* Tab3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab3.swift; sourceTree = "<group>"; };
+		BDCEF7F9279DA94F008EAF50 /* ThirdPartLibSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartLibSection.swift; sourceTree = "<group>"; };
 		BDCEF7FA279DA94F008EAF50 /* SystemElementSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemElementSection.swift; sourceTree = "<group>"; };
 		BDCEF7FC279DA94F008EAF50 /* BasicsElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicsElement.swift; sourceTree = "<group>"; };
 		BDCEF7FD279DA94F008EAF50 /* LayoutElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutElement.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 				BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */,
 			);
 			path = DataFlow;
+			sourceTree = "<group>";
+		};
+		BD7487F727AD5ED5008731B8 /* ThirdPartLib */ = {
+			isa = PBXGroup;
+			children = (
+				BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */,
+			);
+			path = ThirdPartLib;
 			sourceTree = "<group>";
 		};
 		BDCEF7CE279DA8EB008EAF50 = {
@@ -146,8 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				BDCEF7F7279DA94F008EAF50 /* DataFlowSection.swift */,
-				BDCEF7F9279DA94F008EAF50 /* Tab3.swift */,
+				BDCEF7F9279DA94F008EAF50 /* ThirdPartLibSection.swift */,
 				BDCEF7FA279DA94F008EAF50 /* SystemElementSection.swift */,
+				BD7487F727AD5ED5008731B8 /* ThirdPartLib */,
 				BDCEF7FB279DA94F008EAF50 /* SystemElement */,
 				BD7487F227A6EECB008731B8 /* DataFlow */,
 			);
@@ -266,6 +277,7 @@
 			files = (
 				BDCEF7F4279DA947008EAF50 /* ColorExtension.swift in Sources */,
 				BDCEF7E6279DA8ED008EAF50 /* ContentView.swift in Sources */,
+				BD7487FA27AD5EFA008731B8 /* ThirdPartLibExample.swift in Sources */,
 				BD7487EF27A6D963008731B8 /* LabExample.swift in Sources */,
 				BD7487E527A6843C008731B8 /* AnimateExample.swift in Sources */,
 				BD7487E227A44866008731B8 /* FunctionElement.swift in Sources */,
@@ -275,7 +287,7 @@
 				BDCEF7E4279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */,
 				BDCEF806279DA94F008EAF50 /* BasicsElement.swift in Sources */,
 				BD7487F427A6EEFE008731B8 /* DataFlowExample.swift in Sources */,
-				BDCEF802279DA94F008EAF50 /* Tab3.swift in Sources */,
+				BDCEF802279DA94F008EAF50 /* ThirdPartLibSection.swift in Sources */,
 				BD7487E927A6A206008731B8 /* Button.swift in Sources */,
 				BDCEF804279DA94F008EAF50 /* SystemElementSection.swift in Sources */,
 			);
@@ -296,7 +308,7 @@
 				BDCEF7E5279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */,
 				BDCEF807279DA94F008EAF50 /* BasicsElement.swift in Sources */,
 				BD7487F527A6EEFE008731B8 /* DataFlowExample.swift in Sources */,
-				BDCEF803279DA94F008EAF50 /* Tab3.swift in Sources */,
+				BDCEF803279DA94F008EAF50 /* ThirdPartLibSection.swift in Sources */,
 				BD7487EA27A6A206008731B8 /* Button.swift in Sources */,
 				BDCEF805279DA94F008EAF50 /* SystemElementSection.swift in Sources */,
 			);

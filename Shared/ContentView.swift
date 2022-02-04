@@ -25,7 +25,7 @@ struct ContentView: View {
                         Text("状态管理")
                     })
                     .tag(1)
-                Tab3()
+                ThirdPartLibSection()
                     .tabItem({
                         Image(systemName: "antenna.radiowaves.left.and.right")
                         Text("三方组件")

@@ -100,10 +100,10 @@ struct TabViewExample: View {
                 Image(systemName: "photo")
                 Text("Tab2")
             }.tag(1)
-            TabContentView(name: "Tab3")
+            TabContentView(name: "ThirdPartLibSection")
                 .tabItem {
                 Image(systemName: "sun.min")
-                Text("Tab3")
+                Text("ThirdPartLibSection")
             }.tag(2)
             TabContentView(name: "Tab4")
                 .tabItem {
