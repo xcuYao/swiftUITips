@@ -18,6 +18,12 @@
 		BD7487F427A6EEFE008731B8 /* DataFlowExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */; };
 		BD7487F527A6EEFE008731B8 /* DataFlowExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */; };
 		BD7487FA27AD5EFA008731B8 /* ThirdPartLibExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */; };
+		BD74880027AE73A0008731B8 /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FD27AE73A0008731B8 /* WrappingHStack.swift */; };
+		BD74880127AE73A0008731B8 /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FD27AE73A0008731B8 /* WrappingHStack.swift */; };
+		BD74880227AE73A0008731B8 /* InternalWrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FE27AE73A0008731B8 /* InternalWrappingHStack.swift */; };
+		BD74880327AE73A0008731B8 /* InternalWrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FE27AE73A0008731B8 /* InternalWrappingHStack.swift */; };
+		BD74880427AE73A0008731B8 /* NewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FF27AE73A0008731B8 /* NewLine.swift */; };
+		BD74880527AE73A0008731B8 /* NewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FF27AE73A0008731B8 /* NewLine.swift */; };
 		BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDCEF7E4279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */; };
@@ -47,6 +53,9 @@
 		BD7487EE27A6D963008731B8 /* LabExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabExample.swift; sourceTree = "<group>"; };
 		BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowExample.swift; sourceTree = "<group>"; };
 		BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartLibExample.swift; sourceTree = "<group>"; };
+		BD7487FD27AE73A0008731B8 /* WrappingHStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
+		BD7487FE27AE73A0008731B8 /* InternalWrappingHStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalWrappingHStack.swift; sourceTree = "<group>"; };
+		BD7487FF27AE73A0008731B8 /* NewLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLine.swift; sourceTree = "<group>"; };
 		BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipApp.swift; sourceTree = "<group>"; };
 		BDCEF7D5279DA8EC008EAF50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,9 +108,28 @@
 		BD7487F727AD5ED5008731B8 /* ThirdPartLib */ = {
 			isa = PBXGroup;
 			children = (
+				BD7487FB27AE7392008731B8 /* Lib */,
 				BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */,
 			);
 			path = ThirdPartLib;
+			sourceTree = "<group>";
+		};
+		BD7487FB27AE7392008731B8 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				BD7487FC27AE73A0008731B8 /* WrappingHStack */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		BD7487FC27AE73A0008731B8 /* WrappingHStack */ = {
+			isa = PBXGroup;
+			children = (
+				BD7487FD27AE73A0008731B8 /* WrappingHStack.swift */,
+				BD7487FE27AE73A0008731B8 /* InternalWrappingHStack.swift */,
+				BD7487FF27AE73A0008731B8 /* NewLine.swift */,
+			);
+			path = WrappingHStack;
 			sourceTree = "<group>";
 		};
 		BDCEF7CE279DA8EB008EAF50 = {
@@ -279,7 +307,9 @@
 				BDCEF7E6279DA8ED008EAF50 /* ContentView.swift in Sources */,
 				BD7487FA27AD5EFA008731B8 /* ThirdPartLibExample.swift in Sources */,
 				BD7487EF27A6D963008731B8 /* LabExample.swift in Sources */,
+				BD74880427AE73A0008731B8 /* NewLine.swift in Sources */,
 				BD7487E527A6843C008731B8 /* AnimateExample.swift in Sources */,
+				BD74880027AE73A0008731B8 /* WrappingHStack.swift in Sources */,
 				BD7487E227A44866008731B8 /* FunctionElement.swift in Sources */,
 				BDCEF808279DA94F008EAF50 /* LayoutElement.swift in Sources */,
 				BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */,
@@ -288,6 +318,7 @@
 				BDCEF806279DA94F008EAF50 /* BasicsElement.swift in Sources */,
 				BD7487F427A6EEFE008731B8 /* DataFlowExample.swift in Sources */,
 				BDCEF802279DA94F008EAF50 /* ThirdPartLibSection.swift in Sources */,
+				BD74880227AE73A0008731B8 /* InternalWrappingHStack.swift in Sources */,
 				BD7487E927A6A206008731B8 /* Button.swift in Sources */,
 				BDCEF804279DA94F008EAF50 /* SystemElementSection.swift in Sources */,
 			);
@@ -297,6 +328,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD74880127AE73A0008731B8 /* WrappingHStack.swift in Sources */,
+				BD74880527AE73A0008731B8 /* NewLine.swift in Sources */,
 				BDCEF7F5279DA947008EAF50 /* ColorExtension.swift in Sources */,
 				BDCEF7E7279DA8ED008EAF50 /* ContentView.swift in Sources */,
 				BD7487F027A6D963008731B8 /* LabExample.swift in Sources */,
@@ -306,6 +339,7 @@
 				BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */,
 				BDCEF7FF279DA94F008EAF50 /* DataFlowSection.swift in Sources */,
 				BDCEF7E5279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */,
+				BD74880327AE73A0008731B8 /* InternalWrappingHStack.swift in Sources */,
 				BDCEF807279DA94F008EAF50 /* BasicsElement.swift in Sources */,
 				BD7487F527A6EEFE008731B8 /* DataFlowExample.swift in Sources */,
 				BDCEF803279DA94F008EAF50 /* ThirdPartLibSection.swift in Sources */,
