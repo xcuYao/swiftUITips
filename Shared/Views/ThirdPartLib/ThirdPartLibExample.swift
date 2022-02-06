@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//let thirdPartLibs = ["WrappingHStack", "NavigationViewKit", "SheetKit", "SwipeCell", "ASCollectionView"]
+//let thirdPartLibs = ["WrappingHStack", "SheetKit", "SwipeCell", "ASCollectionView"]
 
 struct ThirdPartLibExample: View {
 
@@ -17,8 +17,6 @@ struct ThirdPartLibExample: View {
         switch name {
         case "WrappingHStack":
             WrappingHStackExample()
-        case "NavigationViewKit":
-            NavigationViewKitExample()
         case "SheetKit":
             SheetKitExample()
         case "SwipeCell":
@@ -52,15 +50,35 @@ struct WrappingHStackExample: View {
     }
 }
 
-struct NavigationViewKitExample: View {
-    var body: some View {
-        Text("NavigationViewKitExample")
-    }
-}
-
 struct SheetKitExample: View {
+    
+    @Environment(\.sheetKit) var sheetKit
+    
     var body: some View {
-        Text("SheetKitExample")
+        VStack {
+            MyButton(label: "sheet1", font: .footnote, action: {
+                SheetKit().present {
+                    SheetKitExample()
+                }
+            })
+            MyButton(label: "sheet2", font: .footnote, action: {
+                sheetKit.present(with: .bottomSheet, afterPresent: {
+                    print("afterPresent")
+                }, onDisappear: {
+                    print("onDisappear")
+                }, content: {
+                    SheetKitExample()
+                })
+            })
+            MyButton(label: "Dismiss One", font: .footnote, action: {
+                // dismiss current
+                SheetKit().dismiss()
+            })
+            MyButton(label: "Dismiss All", font: .footnote, action: {
+                // dismiss current
+                SheetKit().dismissAllSheets()
+            })
+        }
     }
 }
 
@@ -78,6 +96,6 @@ struct ASCollectionViewExample: View {
 
 struct ThirdPartLibExample_Previews: PreviewProvider {
     static var previews: some View {
-        ThirdPartLibExample(name: "WrappingHStack")
+        ThirdPartLibExample(name: "SheetKit")
     }
 }

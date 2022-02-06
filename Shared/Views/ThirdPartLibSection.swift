@@ -18,7 +18,7 @@ struct ThirdPartLibSection: View {
     
     @State private var select = 0
 
-    let thirdPartLibs = ["WrappingHStack", "NavigationViewKit", "SheetKit", "SwipeCell", "ASCollectionView"]
+    let thirdPartLibs = ["WrappingHStack", "SheetKit", "SwipeCell", "ASCollectionView"]
     
     
     var body: some View {
