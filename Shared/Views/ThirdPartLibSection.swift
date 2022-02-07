@@ -8,19 +8,14 @@
 import SwiftUI
 
 // https://github.com/dkk/WrappingHStack
-// https://github.com/fatbobman/NavigationViewKit
 // https://github.com/fatbobman/SheetKit
-// https://github.com/fatbobman/SwipeCell
-// https://github.com/apptekstudios/ASCollectionView
-// https://github.com/Silence-GitHub/BBSwiftUIKit
 
 struct ThirdPartLibSection: View {
     
     @State private var select = 0
 
-    let thirdPartLibs = ["WrappingHStack", "SheetKit", "SwipeCell", "ASCollectionView"]
-    
-    
+    let thirdPartLibs = ["WrappingHStack", "SheetKit"]
+
     var body: some View {
         List() {
             Section(header: Text("三方库")) {

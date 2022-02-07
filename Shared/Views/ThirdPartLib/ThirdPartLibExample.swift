@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//let thirdPartLibs = ["WrappingHStack", "SheetKit", "SwipeCell", "ASCollectionView"]
+//let thirdPartLibs = ["WrappingHStack", "SheetKit", "ASCollectionView"]
 
 struct ThirdPartLibExample: View {
 
@@ -19,8 +19,6 @@ struct ThirdPartLibExample: View {
             WrappingHStackExample()
         case "SheetKit":
             SheetKitExample()
-        case "SwipeCell":
-            SwipeCellExample()
         case "ASCollectionView":
             ASCollectionViewExample()
         default:
