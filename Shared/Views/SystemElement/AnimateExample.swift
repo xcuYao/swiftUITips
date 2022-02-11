@@ -15,16 +15,10 @@ struct AnimateExample: View {
         switch name {
         case "Paths":
             PathsExample()
-        case "GeometryEffect":
-            GeometryEffectExample()
-        case "AnimatableModifier":
-            AnimatableModifierExample()
-        case "TimelineView":
-            TimelineViewExample()
-        case "Canvas":
-            CanvasExample()
         case "SwiftUI-Lab":
             LabExample()
+        case "Transitions":
+            TransitionsExample()
         default:
             Text("AnimateExample")
         }
@@ -38,7 +32,7 @@ struct PathsExample: View {
 
     @State private var sides = 3
     @State private var scale = 1.0
-    
+
     @State private var coolSides = 12
     @State private var coolScale = 1.0
 
@@ -159,11 +153,11 @@ struct PathsExample: View {
             return path
         }
     }
-    
+
     struct CoolPolygonShape: Shape {
         var sides: Double
         var scale: Double
-        
+
         var animatableData: AnimatablePair<Double, Double> {
             get { AnimatablePair(sides, scale) }
             set {
@@ -171,81 +165,166 @@ struct PathsExample: View {
                 scale = newValue.second
             }
         }
-        
+
         func path(in rect: CGRect) -> Path {
             // hypotenuse
             let h = Double(min(rect.size.width, rect.size.height)) / 2.0 * scale
-            
+
             // center
             let c = CGPoint(x: rect.size.width / 2.0, y: rect.size.height / 2.0)
-            
+
             var path = Path()
-            
+
             let extra: Int = sides != Double(Int(sides)) ? 1 : 0
-            
+
             var vertex: [CGPoint] = []
-            
+
             for i in 0..<Int(sides) + extra {
-                
+
                 let angle = (Double(i) * (360.0 / sides)) * (Double.pi / 180)
-                
+
                 // Calculate vertex
                 let pt = CGPoint(x: c.x + CGFloat(cos(angle) * h), y: c.y + CGFloat(sin(angle) * h))
-                
+
                 vertex.append(pt)
-                
+
                 if i == 0 {
                     path.move(to: pt) // move to first vertex
                 } else {
                     path.addLine(to: pt) // draw line to next vertex
                 }
             }
-            
+
             path.closeSubpath()
-            
+
             // Draw vertex-to-vertex lines
             drawVertexLines(path: &path, vertex: vertex, n: 0)
-            
+
             return path
         }
-        
+
         func drawVertexLines(path: inout Path, vertex: [CGPoint], n: Int) {
-            
+
             if (vertex.count - n) < 3 { return }
-            
-            for i in (n+2)..<min(n + (vertex.count-1), vertex.count) {
+
+            for i in (n + 2)..<min(n + (vertex.count - 1), vertex.count) {
                 path.move(to: vertex[n])
                 path.addLine(to: vertex[i])
             }
-            
-            drawVertexLines(path: &path, vertex: vertex, n: n+1)
+
+            drawVertexLines(path: &path, vertex: vertex, n: n + 1)
+        }
+    }
+
+}
+
+struct TransitionsExample: View {
+    var body: some View {
+        List {
+            NavigationLink(destination: {
+                TransitionsExample1()
+            }, label: {
+                    Text("Asymmetrical Transitions")
+                })
+        }
+    }
+}
+
+struct TransitionsExample1: View {
+
+    struct LabelView: View {
+        var body: some View {
+            Text("Hello world")
+                .padding(10)
+                .font(.title)
+                .foregroundColor(.white)
+                .background(RoundedRectangle(cornerRadius: 8).fill(Color.green))
+        }
+    }
+
+    @State var show: Bool = false
+    @State private var selectTransition = "opacity"
+    private var transitions = ["opacity", "asymmetric", "asymmetric combined", "flyTransition"]
+    func fetchTransition() -> AnyTransition {
+        switch selectTransition {
+        case "opacity":
+            // 对称动画 透明度
+            return .opacity
+        case "asymmetric":
+            // 不对称动画 入:透明度 出:缩放
+            return .asymmetric(insertion: .opacity, removal: .scale)
+        case "asymmetric combined":
+            // 组合过渡
+            return .asymmetric(insertion: AnyTransition.opacity.combined(with: .slide), removal: .scale)
+        case "flyTransition":
+            return .fly
+        default:
+            return .opacity
+        }
+    }
+
+    var body: some View {
+        VStack(spacing: 10) {
+            Picker(selection: $selectTransition, content: {
+                ForEach(transitions, id: \.self) {
+                    Text($0)
+                }
+            }, label: {
+                    Text("动画效果:\(selectTransition)")
+                })
+            Button(action: {
+                withAnimation {
+                    show.toggle()
+                }
+            }, label: {
+                    Text("animate")
+                }).padding(20)
+            if show {
+                LabelView()
+                    .transition(self.fetchTransition())
+            }
         }
     }
     
+    
+    
 }
 
-struct GeometryEffectExample: View {
-    var body: some View {
-        Text("GeometryEffectExample")
-//            .modifier(SkewEfect(skewValue: 0.5))
+extension AnyTransition {
+    static var fly: AnyTransition {
+        get {
+            AnyTransition.modifier(active: FlyTransition(pct: 0), identity: FlyTransition(pct: 1))
+        }
     }
-}
 
-struct AnimatableModifierExample: View {
-    var body: some View {
-        Text("AnimatableModifierExample")
-    }
-}
+    struct FlyTransition: GeometryEffect {
+        var pct: Double
+        
+        var animatableData: Double {
+            get { pct }
+            set { pct = newValue }
+        }
+        
+        func effectValue(size: CGSize) -> ProjectionTransform {
 
-struct TimelineViewExample: View {
-    var body: some View {
-        Text("AnimatableModifierExample")
-    }
-}
-
-struct CanvasExample: View {
-    var body: some View {
-        Text("AnimatableModifierExample")
+            let rotationPercent = pct
+            let a = CGFloat(Angle(degrees: 90 * (1-rotationPercent)).radians)
+            
+            var transform3d = CATransform3DIdentity;
+            transform3d.m34 = -1/max(size.width, size.height)
+            
+            transform3d = CATransform3DRotate(transform3d, a, 1, 0, 0)
+            transform3d = CATransform3DTranslate(transform3d, -size.width/2.0, -size.height/2.0, 0)
+            
+            let affineTransform1 = ProjectionTransform(CGAffineTransform(translationX: size.width/2.0, y: size.height / 2.0))
+            let affineTransform2 = ProjectionTransform(CGAffineTransform(scaleX: CGFloat(pct * 2), y: CGFloat(pct * 2)))
+            
+            if pct <= 0.5 {
+                return ProjectionTransform(transform3d).concatenating(affineTransform2).concatenating(affineTransform1)
+            } else {
+                return ProjectionTransform(transform3d).concatenating(affineTransform1)
+            }
+        }
     }
 }
 

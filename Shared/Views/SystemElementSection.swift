@@ -15,7 +15,7 @@ struct SystemElementSection: View {
     let basics = ["Text", "Button", "Image", "Toggle", "Label", "Slider", "TextField", "Picker", "DatePicker", "ProgressView", "Stepper"]
     let layouts = ["NavigationView", "TabView", "HStack/VStack/ZStack", "LazyStack", "List", "ScrollView", "Grid"]
     let function = ["Alert", "Sheet", "Popover", "Map", "WebView"]
-    let animation = ["Paths", "SwiftUI-Lab"]
+    let animation = ["Paths", "SwiftUI-Lab", "Transitions"]
 
     var body: some View {
         List() {
