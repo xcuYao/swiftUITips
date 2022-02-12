@@ -21,6 +21,8 @@ struct ThirdPartLibExample: View {
             SheetKitExample()
         case "ASCollectionView":
             ASCollectionViewExample()
+        case "WaterfallGrid":
+            WaterfallGridExample()
         default:
             Text("ThirdPartLibExample")
         }
@@ -33,25 +35,25 @@ struct WrappingHStackExample: View {
             Text("大号文字").font(.title).padding().border(.blue, width: 1)
             Text("踔厉奋发、笃行不怠")
             Image(systemName: "scribble")
-                    .font(.title)
-                    .frame(width: 200, height: 20)
-                    .background(Color.purple)
+                .font(.title)
+                .frame(width: 200, height: 20)
+                .background(Color.purple)
             Text("and loop")
-                    .bold()
-                WrappingHStack(1...20, id:\.self) {
-                    Text("Item: \($0)")
-                        .padding(3)
-                        .background(Rectangle().stroke())
-                }.frame(minWidth: 250)
+                .bold()
+            WrappingHStack(1...20, id: \.self) {
+                Text("Item: \($0)")
+                    .padding(3)
+                    .background(Rectangle().stroke())
+            }.frame(minWidth: 250)
         }.padding(20)
             .border(Color.black, width: 2)
     }
 }
 
 struct SheetKitExample: View {
-    
+
     @Environment(\.sheetKit) var sheetKit
-    
+
     var body: some View {
         VStack {
             MyButton(label: "sheet1", font: .footnote, action: {
@@ -63,10 +65,10 @@ struct SheetKitExample: View {
                 sheetKit.present(with: .bottomSheet, afterPresent: {
                     print("afterPresent")
                 }, onDisappear: {
-                    print("onDisappear")
-                }, content: {
-                    SheetKitExample()
-                })
+                        print("onDisappear")
+                    }, content: {
+                        SheetKitExample()
+                    })
             })
             MyButton(label: "Dismiss One", font: .footnote, action: {
                 // dismiss current
@@ -80,15 +82,24 @@ struct SheetKitExample: View {
     }
 }
 
-struct SwipeCellExample: View {
-    var body: some View {
-        Text("SwipeCellExample")
-    }
-}
-
 struct ASCollectionViewExample: View {
     var body: some View {
         Text("ASCollectionViewExample")
+    }
+}
+
+struct WaterfallGridExample: View {
+
+    var images = Array(0..<22).map { "image\($0)" }.shuffled()
+
+    var body: some View {
+        ScrollView(.vertical, showsIndicators: true) {
+            WaterfallGrid(images, id: \.self) { image in
+                Image(image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }.padding(20)
+        }
     }
 }
 

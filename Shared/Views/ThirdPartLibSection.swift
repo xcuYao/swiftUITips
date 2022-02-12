@@ -14,7 +14,7 @@ struct ThirdPartLibSection: View {
     
     @State private var select = 0
 
-    let thirdPartLibs = ["WrappingHStack", "SheetKit"]
+    let thirdPartLibs = ["WrappingHStack", "SheetKit", "WaterfallGrid"]
 
     var body: some View {
         List() {
