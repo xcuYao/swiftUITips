@@ -7,16 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD2F218827AFB24700849259 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F218327AFB24700849259 /* BottomSheetViewController.swift */; };
-		BD2F218927AFB24700849259 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F218327AFB24700849259 /* BottomSheetViewController.swift */; };
-		BD2F218A27AFB24700849259 /* InteractiveDismissDisabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F218427AFB24700849259 /* InteractiveDismissDisabled.swift */; };
-		BD2F218B27AFB24700849259 /* InteractiveDismissDisabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F218427AFB24700849259 /* InteractiveDismissDisabled.swift */; };
-		BD2F218C27AFB24700849259 /* UIKit++.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F218527AFB24700849259 /* UIKit++.swift */; };
-		BD2F218D27AFB24700849259 /* UIKit++.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F218527AFB24700849259 /* UIKit++.swift */; };
-		BD2F218E27AFB24700849259 /* ClearBackgournd.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F218627AFB24700849259 /* ClearBackgournd.swift */; };
-		BD2F218F27AFB24700849259 /* ClearBackgournd.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F218627AFB24700849259 /* ClearBackgournd.swift */; };
-		BD2F219027AFB24700849259 /* SheetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F218727AFB24700849259 /* SheetKit.swift */; };
-		BD2F219127AFB24700849259 /* SheetKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2F218727AFB24700849259 /* SheetKit.swift */; };
+		BD6B341D27C0C92C00622A99 /* AlertX in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B341C27C0C92C00622A99 /* AlertX */; };
+		BD6B342027C0CBCB00622A99 /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B341F27C0CBCB00622A99 /* WaterfallGrid */; };
+		BD6B342327C0CC8B00622A99 /* SheetKit in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B342227C0CC8B00622A99 /* SheetKit */; };
+		BD6B342627C0CCE600622A99 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B342527C0CCE600622A99 /* WrappingHStack */; };
 		BD7487E227A44866008731B8 /* FunctionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E127A44866008731B8 /* FunctionElement.swift */; };
 		BD7487E327A44866008731B8 /* FunctionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E127A44866008731B8 /* FunctionElement.swift */; };
 		BD7487E527A6843C008731B8 /* AnimateExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E427A6843C008731B8 /* AnimateExample.swift */; };
@@ -28,12 +22,6 @@
 		BD7487F427A6EEFE008731B8 /* DataFlowExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */; };
 		BD7487F527A6EEFE008731B8 /* DataFlowExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */; };
 		BD7487FA27AD5EFA008731B8 /* ThirdPartLibExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */; };
-		BD74880027AE73A0008731B8 /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FD27AE73A0008731B8 /* WrappingHStack.swift */; };
-		BD74880127AE73A0008731B8 /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FD27AE73A0008731B8 /* WrappingHStack.swift */; };
-		BD74880227AE73A0008731B8 /* InternalWrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FE27AE73A0008731B8 /* InternalWrappingHStack.swift */; };
-		BD74880327AE73A0008731B8 /* InternalWrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FE27AE73A0008731B8 /* InternalWrappingHStack.swift */; };
-		BD74880427AE73A0008731B8 /* NewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FF27AE73A0008731B8 /* NewLine.swift */; };
-		BD74880527AE73A0008731B8 /* NewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487FF27AE73A0008731B8 /* NewLine.swift */; };
 		BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDCEF7E4279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */; };
@@ -54,39 +42,15 @@
 		BDCEF807279DA94F008EAF50 /* BasicsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FC279DA94F008EAF50 /* BasicsElement.swift */; };
 		BDCEF808279DA94F008EAF50 /* LayoutElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FD279DA94F008EAF50 /* LayoutElement.swift */; };
 		BDCEF809279DA94F008EAF50 /* LayoutElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7FD279DA94F008EAF50 /* LayoutElement.swift */; };
-		BDFC5D8727B7554700EEC90B /* View+ScrollOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D7D27B7554700EEC90B /* View+ScrollOptions.swift */; };
-		BDFC5D8827B7554700EEC90B /* View+ScrollOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D7D27B7554700EEC90B /* View+ScrollOptions.swift */; };
-		BDFC5D8927B7554700EEC90B /* View+GridStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D7E27B7554700EEC90B /* View+GridStyle.swift */; };
-		BDFC5D8A27B7554700EEC90B /* View+GridStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D7E27B7554700EEC90B /* View+GridStyle.swift */; };
-		BDFC5D8B27B7554700EEC90B /* PreferenceSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8027B7554700EEC90B /* PreferenceSetter.swift */; };
-		BDFC5D8C27B7554700EEC90B /* PreferenceSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8027B7554700EEC90B /* PreferenceSetter.swift */; };
-		BDFC5D8D27B7554700EEC90B /* ElementPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8127B7554700EEC90B /* ElementPreference.swift */; };
-		BDFC5D8E27B7554700EEC90B /* ElementPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8127B7554700EEC90B /* ElementPreference.swift */; };
-		BDFC5D8F27B7554700EEC90B /* WaterfallGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8227B7554700EEC90B /* WaterfallGrid.swift */; };
-		BDFC5D9027B7554700EEC90B /* WaterfallGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8227B7554700EEC90B /* WaterfallGrid.swift */; };
-		BDFC5D9127B7554700EEC90B /* ScrollOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8427B7554700EEC90B /* ScrollOptions.swift */; };
-		BDFC5D9227B7554700EEC90B /* ScrollOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8427B7554700EEC90B /* ScrollOptions.swift */; };
-		BDFC5D9327B7554700EEC90B /* GridSyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8527B7554700EEC90B /* GridSyle.swift */; };
-		BDFC5D9427B7554700EEC90B /* GridSyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8527B7554700EEC90B /* GridSyle.swift */; };
-		BDFC5D9527B7554700EEC90B /* PositiveNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8627B7554700EEC90B /* PositiveNumber.swift */; };
-		BDFC5D9627B7554700EEC90B /* PositiveNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC5D8627B7554700EEC90B /* PositiveNumber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD2F218327AFB24700849259 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
-		BD2F218427AFB24700849259 /* InteractiveDismissDisabled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveDismissDisabled.swift; sourceTree = "<group>"; };
-		BD2F218527AFB24700849259 /* UIKit++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit++.swift"; sourceTree = "<group>"; };
-		BD2F218627AFB24700849259 /* ClearBackgournd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearBackgournd.swift; sourceTree = "<group>"; };
-		BD2F218727AFB24700849259 /* SheetKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetKit.swift; sourceTree = "<group>"; };
 		BD7487E127A44866008731B8 /* FunctionElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionElement.swift; sourceTree = "<group>"; };
 		BD7487E427A6843C008731B8 /* AnimateExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateExample.swift; sourceTree = "<group>"; };
 		BD7487E827A6A206008731B8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		BD7487EE27A6D963008731B8 /* LabExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabExample.swift; sourceTree = "<group>"; };
 		BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowExample.swift; sourceTree = "<group>"; };
 		BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartLibExample.swift; sourceTree = "<group>"; };
-		BD7487FD27AE73A0008731B8 /* WrappingHStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
-		BD7487FE27AE73A0008731B8 /* InternalWrappingHStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalWrappingHStack.swift; sourceTree = "<group>"; };
-		BD7487FF27AE73A0008731B8 /* NewLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLine.swift; sourceTree = "<group>"; };
 		BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipApp.swift; sourceTree = "<group>"; };
 		BDCEF7D5279DA8EC008EAF50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,14 +64,6 @@
 		BDCEF7FA279DA94F008EAF50 /* SystemElementSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemElementSection.swift; sourceTree = "<group>"; };
 		BDCEF7FC279DA94F008EAF50 /* BasicsElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicsElement.swift; sourceTree = "<group>"; };
 		BDCEF7FD279DA94F008EAF50 /* LayoutElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutElement.swift; sourceTree = "<group>"; };
-		BDFC5D7D27B7554700EEC90B /* View+ScrollOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+ScrollOptions.swift"; sourceTree = "<group>"; };
-		BDFC5D7E27B7554700EEC90B /* View+GridStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+GridStyle.swift"; sourceTree = "<group>"; };
-		BDFC5D8027B7554700EEC90B /* PreferenceSetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceSetter.swift; sourceTree = "<group>"; };
-		BDFC5D8127B7554700EEC90B /* ElementPreference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementPreference.swift; sourceTree = "<group>"; };
-		BDFC5D8227B7554700EEC90B /* WaterfallGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterfallGrid.swift; sourceTree = "<group>"; };
-		BDFC5D8427B7554700EEC90B /* ScrollOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollOptions.swift; sourceTree = "<group>"; };
-		BDFC5D8527B7554700EEC90B /* GridSyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSyle.swift; sourceTree = "<group>"; };
-		BDFC5D8627B7554700EEC90B /* PositiveNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositiveNumber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +71,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD6B342627C0CCE600622A99 /* WrappingHStack in Frameworks */,
+				BD6B341D27C0C92C00622A99 /* AlertX in Frameworks */,
+				BD6B342027C0CBCB00622A99 /* WaterfallGrid in Frameworks */,
+				BD6B342327C0CC8B00622A99 /* SheetKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,18 +88,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BD2F218227AFB24700849259 /* SheetKit */ = {
-			isa = PBXGroup;
-			children = (
-				BD2F218327AFB24700849259 /* BottomSheetViewController.swift */,
-				BD2F218427AFB24700849259 /* InteractiveDismissDisabled.swift */,
-				BD2F218527AFB24700849259 /* UIKit++.swift */,
-				BD2F218627AFB24700849259 /* ClearBackgournd.swift */,
-				BD2F218727AFB24700849259 /* SheetKit.swift */,
-			);
-			path = SheetKit;
-			sourceTree = "<group>";
-		};
 		BD7487E727A6A1F7008731B8 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,21 +116,8 @@
 		BD7487FB27AE7392008731B8 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				BDFC5D7C27B7554700EEC90B /* WaterfallGrid */,
-				BD2F218227AFB24700849259 /* SheetKit */,
-				BD7487FC27AE73A0008731B8 /* WrappingHStack */,
 			);
 			path = Lib;
-			sourceTree = "<group>";
-		};
-		BD7487FC27AE73A0008731B8 /* WrappingHStack */ = {
-			isa = PBXGroup;
-			children = (
-				BD7487FD27AE73A0008731B8 /* WrappingHStack.swift */,
-				BD7487FE27AE73A0008731B8 /* InternalWrappingHStack.swift */,
-				BD7487FF27AE73A0008731B8 /* NewLine.swift */,
-			);
-			path = WrappingHStack;
 			sourceTree = "<group>";
 		};
 		BDCEF7CE279DA8EB008EAF50 = {
@@ -258,37 +193,6 @@
 			path = SystemElement;
 			sourceTree = "<group>";
 		};
-		BDFC5D7C27B7554700EEC90B /* WaterfallGrid */ = {
-			isa = PBXGroup;
-			children = (
-				BDFC5D7D27B7554700EEC90B /* View+ScrollOptions.swift */,
-				BDFC5D7E27B7554700EEC90B /* View+GridStyle.swift */,
-				BDFC5D7F27B7554700EEC90B /* Preference */,
-				BDFC5D8227B7554700EEC90B /* WaterfallGrid.swift */,
-				BDFC5D8327B7554700EEC90B /* Environment */,
-			);
-			path = WaterfallGrid;
-			sourceTree = "<group>";
-		};
-		BDFC5D7F27B7554700EEC90B /* Preference */ = {
-			isa = PBXGroup;
-			children = (
-				BDFC5D8027B7554700EEC90B /* PreferenceSetter.swift */,
-				BDFC5D8127B7554700EEC90B /* ElementPreference.swift */,
-			);
-			path = Preference;
-			sourceTree = "<group>";
-		};
-		BDFC5D8327B7554700EEC90B /* Environment */ = {
-			isa = PBXGroup;
-			children = (
-				BDFC5D8427B7554700EEC90B /* ScrollOptions.swift */,
-				BDFC5D8527B7554700EEC90B /* GridSyle.swift */,
-				BDFC5D8627B7554700EEC90B /* PositiveNumber.swift */,
-			);
-			path = Environment;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -305,6 +209,12 @@
 			dependencies = (
 			);
 			name = "SwiftUITip (iOS)";
+			packageProductDependencies = (
+				BD6B341C27C0C92C00622A99 /* AlertX */,
+				BD6B341F27C0CBCB00622A99 /* WaterfallGrid */,
+				BD6B342227C0CC8B00622A99 /* SheetKit */,
+				BD6B342527C0CCE600622A99 /* WrappingHStack */,
+			);
 			productName = "SwiftUITip (iOS)";
 			productReference = BDCEF7DB279DA8ED008EAF50 /* SwiftUITip.app */;
 			productType = "com.apple.product-type.application";
@@ -353,6 +263,12 @@
 				Base,
 			);
 			mainGroup = BDCEF7CE279DA8EB008EAF50;
+			packageReferences = (
+				BD6B341B27C0C92C00622A99 /* XCRemoteSwiftPackageReference "AlertX" */,
+				BD6B341E27C0CBCB00622A99 /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
+				BD6B342127C0CC8B00622A99 /* XCRemoteSwiftPackageReference "SheetKit" */,
+				BD6B342427C0CCE600622A99 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+			);
 			productRefGroup = BDCEF7DC279DA8ED008EAF50 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -388,36 +304,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDCEF7F4279DA947008EAF50 /* ColorExtension.swift in Sources */,
-				BD2F218E27AFB24700849259 /* ClearBackgournd.swift in Sources */,
 				BDCEF7E6279DA8ED008EAF50 /* ContentView.swift in Sources */,
 				BD7487FA27AD5EFA008731B8 /* ThirdPartLibExample.swift in Sources */,
-				BDFC5D8927B7554700EEC90B /* View+GridStyle.swift in Sources */,
 				BD7487EF27A6D963008731B8 /* LabExample.swift in Sources */,
-				BD74880427AE73A0008731B8 /* NewLine.swift in Sources */,
 				BD7487E527A6843C008731B8 /* AnimateExample.swift in Sources */,
-				BD74880027AE73A0008731B8 /* WrappingHStack.swift in Sources */,
 				BD7487E227A44866008731B8 /* FunctionElement.swift in Sources */,
-				BDFC5D8D27B7554700EEC90B /* ElementPreference.swift in Sources */,
-				BD2F218C27AFB24700849259 /* UIKit++.swift in Sources */,
-				BDFC5D8B27B7554700EEC90B /* PreferenceSetter.swift in Sources */,
 				BDCEF808279DA94F008EAF50 /* LayoutElement.swift in Sources */,
-				BDFC5D9327B7554700EEC90B /* GridSyle.swift in Sources */,
 				BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */,
 				BDCEF7FE279DA94F008EAF50 /* DataFlowSection.swift in Sources */,
-				BDFC5D9527B7554700EEC90B /* PositiveNumber.swift in Sources */,
-				BD2F219027AFB24700849259 /* SheetKit.swift in Sources */,
 				BDCEF7E4279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */,
-				BDFC5D8F27B7554700EEC90B /* WaterfallGrid.swift in Sources */,
 				BDCEF806279DA94F008EAF50 /* BasicsElement.swift in Sources */,
-				BD2F218827AFB24700849259 /* BottomSheetViewController.swift in Sources */,
-				BD2F218A27AFB24700849259 /* InteractiveDismissDisabled.swift in Sources */,
 				BD7487F427A6EEFE008731B8 /* DataFlowExample.swift in Sources */,
 				BDCEF802279DA94F008EAF50 /* ThirdPartLibSection.swift in Sources */,
-				BDFC5D8727B7554700EEC90B /* View+ScrollOptions.swift in Sources */,
-				BD74880227AE73A0008731B8 /* InternalWrappingHStack.swift in Sources */,
 				BD7487E927A6A206008731B8 /* Button.swift in Sources */,
 				BDCEF804279DA94F008EAF50 /* SystemElementSection.swift in Sources */,
-				BDFC5D9127B7554700EEC90B /* ScrollOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,14 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD2F218B27AFB24700849259 /* InteractiveDismissDisabled.swift in Sources */,
-				BD74880127AE73A0008731B8 /* WrappingHStack.swift in Sources */,
-				BD2F218927AFB24700849259 /* BottomSheetViewController.swift in Sources */,
-				BD74880527AE73A0008731B8 /* NewLine.swift in Sources */,
-				BDFC5D8A27B7554700EEC90B /* View+GridStyle.swift in Sources */,
-				BD2F218F27AFB24700849259 /* ClearBackgournd.swift in Sources */,
 				BDCEF7F5279DA947008EAF50 /* ColorExtension.swift in Sources */,
-				BDFC5D8E27B7554700EEC90B /* ElementPreference.swift in Sources */,
 				BDCEF7E7279DA8ED008EAF50 /* ContentView.swift in Sources */,
 				BD7487F027A6D963008731B8 /* LabExample.swift in Sources */,
 				BD7487E627A6843C008731B8 /* AnimateExample.swift in Sources */,
@@ -441,20 +334,11 @@
 				BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */,
 				BDCEF7FF279DA94F008EAF50 /* DataFlowSection.swift in Sources */,
 				BDCEF7E5279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */,
-				BD74880327AE73A0008731B8 /* InternalWrappingHStack.swift in Sources */,
-				BDFC5D9627B7554700EEC90B /* PositiveNumber.swift in Sources */,
 				BDCEF807279DA94F008EAF50 /* BasicsElement.swift in Sources */,
 				BD7487F527A6EEFE008731B8 /* DataFlowExample.swift in Sources */,
-				BD2F218D27AFB24700849259 /* UIKit++.swift in Sources */,
 				BDCEF803279DA94F008EAF50 /* ThirdPartLibSection.swift in Sources */,
-				BDFC5D9027B7554700EEC90B /* WaterfallGrid.swift in Sources */,
 				BD7487EA27A6A206008731B8 /* Button.swift in Sources */,
-				BDFC5D8C27B7554700EEC90B /* PreferenceSetter.swift in Sources */,
-				BD2F219127AFB24700849259 /* SheetKit.swift in Sources */,
-				BDFC5D9427B7554700EEC90B /* GridSyle.swift in Sources */,
-				BDFC5D9227B7554700EEC90B /* ScrollOptions.swift in Sources */,
 				BDCEF805279DA94F008EAF50 /* SystemElementSection.swift in Sources */,
-				BDFC5D8827B7554700EEC90B /* View+ScrollOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,6 +600,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BD6B341B27C0C92C00622A99 /* XCRemoteSwiftPackageReference "AlertX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/neel-makhecha/AlertX.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BD6B341E27C0CBCB00622A99 /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BD6B342127C0CC8B00622A99 /* XCRemoteSwiftPackageReference "SheetKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fatbobman/SheetKit";
+			requirement = {
+				kind = exactVersion;
+				version = 0.1.0;
+			};
+		};
+		BD6B342427C0CCE600622A99 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BD6B341C27C0C92C00622A99 /* AlertX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD6B341B27C0C92C00622A99 /* XCRemoteSwiftPackageReference "AlertX" */;
+			productName = AlertX;
+		};
+		BD6B341F27C0CBCB00622A99 /* WaterfallGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD6B341E27C0CBCB00622A99 /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
+			productName = WaterfallGrid;
+		};
+		BD6B342227C0CC8B00622A99 /* SheetKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD6B342127C0CC8B00622A99 /* XCRemoteSwiftPackageReference "SheetKit" */;
+			productName = SheetKit;
+		};
+		BD6B342527C0CCE600622A99 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD6B342427C0CCE600622A99 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BDCEF7CF279DA8EB008EAF50 /* Project object */;
 }
