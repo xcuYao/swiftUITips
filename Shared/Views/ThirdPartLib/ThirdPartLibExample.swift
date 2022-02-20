@@ -9,6 +9,7 @@ import SwiftUI
 import WaterfallGrid
 import SheetKit
 import WrappingHStack
+import SkeletonUI
 
 //let thirdPartLibs = ["WrappingHStack", "SheetKit", "ASCollectionView"]
 
@@ -26,6 +27,8 @@ struct ThirdPartLibExample: View {
             ASCollectionViewExample()
         case "WaterfallGrid":
             WaterfallGridExample()
+        case "SkeletonUI":
+            SkeletonUIExample()
         default:
             Text("ThirdPartLibExample")
         }
@@ -68,10 +71,10 @@ struct SheetKitExample: View {
                 sheetKit.present(with: .bottomSheet, afterPresent: {
                     print("afterPresent")
                 }, onDisappear: {
-                        print("onDisappear")
-                    }, content: {
-                        SheetKitExample()
-                    })
+                    print("onDisappear")
+                }, content: {
+                    SheetKitExample()
+                })
             })
             MyButton(label: "Dismiss One", font: .footnote, action: {
                 // dismiss current
@@ -102,6 +105,34 @@ struct WaterfallGridExample: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }.padding(20)
+        }
+    }
+}
+
+struct SkeletonUIExample: View {
+
+    struct User: Identifiable {
+        let id = UUID()
+        let name: String
+    }
+
+    @State var users = [User]()
+    var body: some View {
+        SkeletonList(with: users, quantity: 6) { loading, user in
+            Text(user?.name)
+                .skeleton(with: loading)
+                .shape(type: .rectangle)
+                .appearance(type: .solid(color: .red, background: .blue))
+                .multiline(lines: 3, scales: [1: 0.5])
+                .animation(type: .pulse())
+        }
+            .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                self.users = [User(name: "John Doe"),
+                              User(name: "Jane Doe"),
+                              User(name: "James Doe"),
+                              User(name: "Judy Doe")]
+            }
         }
     }
 }

@@ -11,6 +11,7 @@
 		BD6B342027C0CBCB00622A99 /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B341F27C0CBCB00622A99 /* WaterfallGrid */; };
 		BD6B342327C0CC8B00622A99 /* SheetKit in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B342227C0CC8B00622A99 /* SheetKit */; };
 		BD6B342627C0CCE600622A99 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B342527C0CCE600622A99 /* WrappingHStack */; };
+		BD6B342927C295FB00622A99 /* SkeletonUI in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B342827C295FB00622A99 /* SkeletonUI */; };
 		BD7487E227A44866008731B8 /* FunctionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E127A44866008731B8 /* FunctionElement.swift */; };
 		BD7487E327A44866008731B8 /* FunctionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E127A44866008731B8 /* FunctionElement.swift */; };
 		BD7487E527A6843C008731B8 /* AnimateExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487E427A6843C008731B8 /* AnimateExample.swift */; };
@@ -71,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD6B342927C295FB00622A99 /* SkeletonUI in Frameworks */,
 				BD6B342627C0CCE600622A99 /* WrappingHStack in Frameworks */,
 				BD6B341D27C0C92C00622A99 /* AlertX in Frameworks */,
 				BD6B342027C0CBCB00622A99 /* WaterfallGrid in Frameworks */,
@@ -214,6 +216,7 @@
 				BD6B341F27C0CBCB00622A99 /* WaterfallGrid */,
 				BD6B342227C0CC8B00622A99 /* SheetKit */,
 				BD6B342527C0CCE600622A99 /* WrappingHStack */,
+				BD6B342827C295FB00622A99 /* SkeletonUI */,
 			);
 			productName = "SwiftUITip (iOS)";
 			productReference = BDCEF7DB279DA8ED008EAF50 /* SwiftUITip.app */;
@@ -268,6 +271,7 @@
 				BD6B341E27C0CBCB00622A99 /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
 				BD6B342127C0CC8B00622A99 /* XCRemoteSwiftPackageReference "SheetKit" */,
 				BD6B342427C0CCE600622A99 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				BD6B342727C295FB00622A99 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
 			);
 			productRefGroup = BDCEF7DC279DA8ED008EAF50 /* Products */;
 			projectDirPath = "";
@@ -634,6 +638,14 @@
 				version = 2.2.0;
 			};
 		};
+		BD6B342727C295FB00622A99 /* XCRemoteSwiftPackageReference "SkeletonUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CSolanaM/SkeletonUI";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.7;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -656,6 +668,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BD6B342427C0CCE600622A99 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
 			productName = WrappingHStack;
+		};
+		BD6B342827C295FB00622A99 /* SkeletonUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD6B342727C295FB00622A99 /* XCRemoteSwiftPackageReference "SkeletonUI" */;
+			productName = SkeletonUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
