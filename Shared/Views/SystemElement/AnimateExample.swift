@@ -19,6 +19,8 @@ struct AnimateExample: View {
             LabExample()
         case "Transitions":
             TransitionsExample()
+        case "3D-Scroll":
+            ThreeDScrollExample()
         default:
             Text("AnimateExample")
         }
@@ -285,9 +287,26 @@ struct TransitionsExample1: View {
             }
         }
     }
-    
-    
-    
+}
+
+struct ThreeDScrollExample: View {
+
+    @State var colors: [Color] = Array(0...10).map { _ in Color.random }
+
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .center, spacing: 230) {
+                ForEach(colors, id: \.self) { color in
+                    GeometryReader { geometry in
+                        Rectangle().foregroundColor(color)
+                            .frame(width: 200, height: 300, alignment: .center)
+                            .cornerRadius(16)
+                            .rotation3DEffect(Angle(degrees: (Double(geometry.frame(in: .global).minX) - 210) / -20), axis: (x: 0, y: 1.0, z: 0))
+                    }
+                }
+            }.padding(.horizontal, 210)
+        }
+    }
 }
 
 extension AnyTransition {
@@ -299,26 +318,26 @@ extension AnyTransition {
 
     struct FlyTransition: GeometryEffect {
         var pct: Double
-        
+
         var animatableData: Double {
             get { pct }
             set { pct = newValue }
         }
-        
+
         func effectValue(size: CGSize) -> ProjectionTransform {
 
             let rotationPercent = pct
-            let a = CGFloat(Angle(degrees: 90 * (1-rotationPercent)).radians)
-            
+            let a = CGFloat(Angle(degrees: 90 * (1 - rotationPercent)).radians)
+
             var transform3d = CATransform3DIdentity;
-            transform3d.m34 = -1/max(size.width, size.height)
-            
+            transform3d.m34 = -1 / max(size.width, size.height)
+
             transform3d = CATransform3DRotate(transform3d, a, 1, 0, 0)
-            transform3d = CATransform3DTranslate(transform3d, -size.width/2.0, -size.height/2.0, 0)
-            
-            let affineTransform1 = ProjectionTransform(CGAffineTransform(translationX: size.width/2.0, y: size.height / 2.0))
+            transform3d = CATransform3DTranslate(transform3d, -size.width / 2.0, -size.height / 2.0, 0)
+
+            let affineTransform1 = ProjectionTransform(CGAffineTransform(translationX: size.width / 2.0, y: size.height / 2.0))
             let affineTransform2 = ProjectionTransform(CGAffineTransform(scaleX: CGFloat(pct * 2), y: CGFloat(pct * 2)))
-            
+
             if pct <= 0.5 {
                 return ProjectionTransform(transform3d).concatenating(affineTransform2).concatenating(affineTransform1)
             } else {
