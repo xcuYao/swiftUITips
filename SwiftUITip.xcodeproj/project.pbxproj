@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD2CF99227CA6A240093C933 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BD2CF99127CA6A240093C933 /* BottomBar-SwiftUI */; };
 		BD6B341D27C0C92C00622A99 /* AlertX in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B341C27C0C92C00622A99 /* AlertX */; };
 		BD6B342027C0CBCB00622A99 /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B341F27C0CBCB00622A99 /* WaterfallGrid */; };
 		BD6B342327C0CC8B00622A99 /* SheetKit in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B342227C0CC8B00622A99 /* SheetKit */; };
@@ -75,6 +76,7 @@
 				BD6B342927C295FB00622A99 /* SkeletonUI in Frameworks */,
 				BD6B342627C0CCE600622A99 /* WrappingHStack in Frameworks */,
 				BD6B341D27C0C92C00622A99 /* AlertX in Frameworks */,
+				BD2CF99227CA6A240093C933 /* BottomBar-SwiftUI in Frameworks */,
 				BD6B342027C0CBCB00622A99 /* WaterfallGrid in Frameworks */,
 				BD6B342327C0CC8B00622A99 /* SheetKit in Frameworks */,
 			);
@@ -209,6 +211,7 @@
 				BD6B342227C0CC8B00622A99 /* SheetKit */,
 				BD6B342527C0CCE600622A99 /* WrappingHStack */,
 				BD6B342827C295FB00622A99 /* SkeletonUI */,
+				BD2CF99127CA6A240093C933 /* BottomBar-SwiftUI */,
 			);
 			productName = "SwiftUITip (iOS)";
 			productReference = BDCEF7DB279DA8ED008EAF50 /* SwiftUITip.app */;
@@ -264,6 +267,7 @@
 				BD6B342127C0CC8B00622A99 /* XCRemoteSwiftPackageReference "SheetKit" */,
 				BD6B342427C0CCE600622A99 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 				BD6B342727C295FB00622A99 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
+				BD2CF99027CA6A240093C933 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
 			);
 			productRefGroup = BDCEF7DC279DA8ED008EAF50 /* Products */;
 			projectDirPath = "";
@@ -598,6 +602,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BD2CF99027CA6A240093C933 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/smartvipere75/bottombar-swiftui";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		BD6B341B27C0C92C00622A99 /* XCRemoteSwiftPackageReference "AlertX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/neel-makhecha/AlertX.git";
@@ -641,6 +653,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BD2CF99127CA6A240093C933 /* BottomBar-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD2CF99027CA6A240093C933 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
+			productName = "BottomBar-SwiftUI";
+		};
 		BD6B341C27C0C92C00622A99 /* AlertX */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BD6B341B27C0C92C00622A99 /* XCRemoteSwiftPackageReference "AlertX" */;
