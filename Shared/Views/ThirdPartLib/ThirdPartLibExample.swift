@@ -11,6 +11,7 @@ import SheetKit
 import WrappingHStack
 import SkeletonUI
 import BottomBar_SwiftUI
+import SPAlert
 
 //let thirdPartLibs = ["WrappingHStack", "SheetKit", "ASCollectionView"]
 
@@ -32,6 +33,8 @@ struct ThirdPartLibExample: View {
             SkeletonUIExample()
         case "BottomBar":
             BottomBarExample()
+        case "SPAlert":
+            SPAlertExample()
         default:
             Text("ThirdPartLibExample")
         }
@@ -223,6 +226,35 @@ struct BottomBarExample: View {
                     .navigationBarTitle(Text(selectedItem.title))
                 BottomBar(selectedIndex: $selectedIndex, items: items)
             }
+        }
+    }
+}
+
+struct SPAlertExample: View {
+    
+    @State var showAlert1 = false
+    @State var showAlert2 = false
+    
+    var body: some View {
+        VStack {
+            Button("Show alert 1") {
+                showAlert1.toggle()
+            }.SPAlert(isPresent: $showAlert1, message: "this is message only")
+
+            Button("Show alert 2") {
+                showAlert2.toggle()
+            }.SPAlert(
+                isPresent: $showAlert2,
+                title: "Alert title",
+                message: "Alert message",
+                duration: 2.0,
+                dismissOnTap: false,
+                preset: .custom(UIImage(systemName: "heart")!),
+                haptic: .success,
+                layout: .init(),
+                completion: {
+                    print("Alert is destory")
+                })
         }
     }
 }

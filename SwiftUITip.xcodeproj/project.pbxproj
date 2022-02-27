@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD2CF99227CA6A240093C933 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BD2CF99127CA6A240093C933 /* BottomBar-SwiftUI */; };
+		BD2CF99527CB84640093C933 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = BD2CF99427CB84640093C933 /* SPAlert */; };
 		BD6B341D27C0C92C00622A99 /* AlertX in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B341C27C0C92C00622A99 /* AlertX */; };
 		BD6B342027C0CBCB00622A99 /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B341F27C0CBCB00622A99 /* WaterfallGrid */; };
 		BD6B342327C0CC8B00622A99 /* SheetKit in Frameworks */ = {isa = PBXBuildFile; productRef = BD6B342227C0CC8B00622A99 /* SheetKit */; };
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD2CF99527CB84640093C933 /* SPAlert in Frameworks */,
 				BD6B342927C295FB00622A99 /* SkeletonUI in Frameworks */,
 				BD6B342627C0CCE600622A99 /* WrappingHStack in Frameworks */,
 				BD6B341D27C0C92C00622A99 /* AlertX in Frameworks */,
@@ -212,6 +214,7 @@
 				BD6B342527C0CCE600622A99 /* WrappingHStack */,
 				BD6B342827C295FB00622A99 /* SkeletonUI */,
 				BD2CF99127CA6A240093C933 /* BottomBar-SwiftUI */,
+				BD2CF99427CB84640093C933 /* SPAlert */,
 			);
 			productName = "SwiftUITip (iOS)";
 			productReference = BDCEF7DB279DA8ED008EAF50 /* SwiftUITip.app */;
@@ -268,6 +271,7 @@
 				BD6B342427C0CCE600622A99 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 				BD6B342727C295FB00622A99 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
 				BD2CF99027CA6A240093C933 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
+				BD2CF99327CB84640093C933 /* XCRemoteSwiftPackageReference "SPAlert" */,
 			);
 			productRefGroup = BDCEF7DC279DA8ED008EAF50 /* Products */;
 			projectDirPath = "";
@@ -610,6 +614,14 @@
 				kind = branch;
 			};
 		};
+		BD2CF99327CB84640093C933 /* XCRemoteSwiftPackageReference "SPAlert" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
+			requirement = {
+				kind = exactVersion;
+				version = 4.2.0;
+			};
+		};
 		BD6B341B27C0C92C00622A99 /* XCRemoteSwiftPackageReference "AlertX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/neel-makhecha/AlertX.git";
@@ -657,6 +669,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BD2CF99027CA6A240093C933 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
 			productName = "BottomBar-SwiftUI";
+		};
+		BD2CF99427CB84640093C933 /* SPAlert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD2CF99327CB84640093C933 /* XCRemoteSwiftPackageReference "SPAlert" */;
+			productName = SPAlert;
 		};
 		BD6B341C27C0C92C00622A99 /* AlertX */ = {
 			isa = XCSwiftPackageProductDependency;
