@@ -25,6 +25,7 @@
 		BD7487F427A6EEFE008731B8 /* DataFlowExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */; };
 		BD7487F527A6EEFE008731B8 /* DataFlowExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */; };
 		BD7487FA27AD5EFA008731B8 /* ThirdPartLibExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */; };
+		BD8B39ED27CC64850068099B /* TutorialsExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8B39EC27CC64850068099B /* TutorialsExample.swift */; };
 		BDC00A0227A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDC00A0327A1475F00B9C2DE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */; };
 		BDCEF7E4279DA8ED008EAF50 /* SwiftUITipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */; };
@@ -54,6 +55,7 @@
 		BD7487EE27A6D963008731B8 /* LabExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabExample.swift; sourceTree = "<group>"; };
 		BD7487F327A6EEFE008731B8 /* DataFlowExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFlowExample.swift; sourceTree = "<group>"; };
 		BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartLibExample.swift; sourceTree = "<group>"; };
+		BD8B39EC27CC64850068099B /* TutorialsExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsExample.swift; sourceTree = "<group>"; };
 		BDC00A0127A1475F00B9C2DE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		BDCEF7D4279DA8EC008EAF50 /* SwiftUITipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipApp.swift; sourceTree = "<group>"; };
 		BDCEF7D5279DA8EC008EAF50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				BD7487F927AD5EFA008731B8 /* ThirdPartLibExample.swift */,
+				BD8B39EC27CC64850068099B /* TutorialsExample.swift */,
 			);
 			path = ThirdPartLib;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				BDCEF7E6279DA8ED008EAF50 /* ContentView.swift in Sources */,
 				BD7487FA27AD5EFA008731B8 /* ThirdPartLibExample.swift in Sources */,
 				BD7487EF27A6D963008731B8 /* LabExample.swift in Sources */,
+				BD8B39ED27CC64850068099B /* TutorialsExample.swift in Sources */,
 				BD7487E527A6843C008731B8 /* AnimateExample.swift in Sources */,
 				BD7487E227A44866008731B8 /* FunctionElement.swift in Sources */,
 				BDCEF808279DA94F008EAF50 /* LayoutElement.swift in Sources */,

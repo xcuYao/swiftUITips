@@ -28,7 +28,7 @@ struct ContentView: View {
                 ThirdPartLibSection()
                     .tabItem({
                         Image(systemName: "antenna.radiowaves.left.and.right")
-                        Text("三方组件")
+                        Text("三方/例子")
                     })
                     .tag(2)
             }.navigationBarTitle("SwiftUITip")

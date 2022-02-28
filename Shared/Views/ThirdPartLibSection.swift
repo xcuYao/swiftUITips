@@ -15,13 +15,25 @@ struct ThirdPartLibSection: View {
     @State private var select = 0
 
     let thirdPartLibs = ["WrappingHStack", "SheetKit", "WaterfallGrid", "SkeletonUI", "BottomBar", "SPAlert"]
-
+    
+    let tutorials = ["DropdownPicker"]
+    
     var body: some View {
         List() {
             Section(header: Text("三方库")) {
                 ForEach(thirdPartLibs, id: \.self) { data in
                     NavigationLink(destination: {
                         ThirdPartLibExample(name: data)
+                            .navigationBarTitle(Text(data), displayMode: .inline)
+                    }) {
+                        Text(data)
+                    }
+                }
+            }
+            Section(header: Text("例子")) {
+                ForEach(tutorials, id: \.self) { data in
+                    NavigationLink(destination: {
+                        TutorialsExample(name: data)
                             .navigationBarTitle(Text(data), displayMode: .inline)
                     }) {
                         Text(data)
