@@ -10,12 +10,13 @@ import SwiftUI
 struct TutorialsExample: View {
 
     var name: String
-    
 
     var body: some View {
         switch name {
         case "DropdownPicker":
             DropdownPickerExample()
+        case "IsometricView":
+            IsometricViewExample()
         default:
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         }
@@ -23,15 +24,15 @@ struct TutorialsExample: View {
 }
 
 struct DropdownPickerExample: View {
-    
+
     @State private var sizeSelection = 0
     @State private var nameSelection = 0
-    
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            DropdownPicker(title: "Size",options: ["Small", "Medium", "Large", "X-Large"], selection: $sizeSelection)
+            DropdownPicker(title: "Size", options: ["Small", "Medium", "Large", "X-Large"], selection: $sizeSelection)
             Divider().padding([.horizontal], 12)
-            DropdownPicker(title: "Name",options: ["Andy", "Bob", "Jack", "Zheng"], selection: $nameSelection)
+            DropdownPicker(title: "Name", options: ["Andy", "Bob", "Jack", "Zheng"], selection: $nameSelection)
         }
     }
 }
@@ -74,19 +75,19 @@ struct DropdownPicker: View {
                                 Text(options[i])
                                     .picker_selectionStyle()
                                     .onTapGesture {
-                                        withAnimation(Animation.spring().speed(2)) {
-                                            showOptions.toggle()
-                                        }
-                                    }.frame(maxWidth: .infinity)
+                                    withAnimation(Animation.spring().speed(2)) {
+                                        showOptions.toggle()
+                                    }
+                                }.frame(maxWidth: .infinity)
                             } else {
                                 Text(options[i])
                                     .picker_normalStyle()
                                     .onTapGesture {
-                                        withAnimation(Animation.spring().speed(2)) {
-                                            selection = i
-                                            showOptions.toggle()
-                                        }
-                                    }.frame(maxWidth: .infinity)
+                                    withAnimation(Animation.spring().speed(2)) {
+                                        selection = i
+                                        showOptions.toggle()
+                                    }
+                                }.frame(maxWidth: .infinity)
                             }
                         }
                         Spacer()
@@ -115,8 +116,112 @@ extension Text {
     }
 }
 
+// ----------------
+
+struct IsometricViewExample: View {
+    @State private var active = false
+    var body: some View {
+        VStack {
+            IsometricView(active: active, extruded: true, depth: 20) {
+                Rectangle()
+                    .fill(LinearGradient(colors: [.red, .green, .blue], startPoint: .leading, endPoint: .trailing))
+                    .frame(width: 100, height: 100)
+            }
+            Toggle("active", isOn: $active.animation())
+                .frame(width: 200, alignment: .center)
+        }
+    }
+}
+
+struct IsometricView<Content: View>: View {
+
+    var active: Bool
+    var content: Content
+    var extruded: Bool
+    var depth: CGFloat
+
+    init(active: Bool, extruded: Bool = false, depth: CGFloat = 20, @ViewBuilder content: () -> Content) {
+        self.active = active
+        self.extruded = extruded
+        self.depth = depth
+        self.content = content()
+    }
+
+    @ViewBuilder var body: some View {
+        if active {
+            if extruded {
+                content
+                    .modifier(ExtrudeModifier(depth: depth, texture: content))
+                    .modifier(IsometricViewModifier(active: active))
+                    .animation(.easeInOut, value: active)
+            } else {
+                content
+                    .modifier(IsometricViewModifier(active: active))
+                    .animation(.easeInOut, value: active)
+            }
+        } else {
+            content
+                .animation(.easeInOut, value: active)
+        }
+    }
+}
+
+struct IsometricViewModifier: ViewModifier {
+    var active: Bool
+    func body(content: Content) -> some View {
+        if active {
+            content
+                .rotationEffect(Angle(degrees: 45), anchor: .center)
+                .scaleEffect(x: 1.0, y: 0.5, anchor: .center)
+        } else {
+            content
+        }
+    }
+}
+
+struct ExtrudeModifier<Texture: View>: ViewModifier {
+    var depth: CGFloat
+    var texture: Texture
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+            GeometryReader { geo in
+                texture
+                    .brightness(-0.05)
+                    .scaleEffect(x: 1, y: geo.size.height * geo.size.height, anchor: .bottom)
+                    .frame(height: depth, alignment: .top)
+                    .mask(Rectangle())
+                    .rotation3DEffect(Angle(degrees: 180),
+                    axis: (x: 1.0, y: 0.0, z: 0.0),
+                    anchor: .center,
+                    anchorZ: 0.0,
+                    perspective: 1.0
+                )
+                    .projectionEffect(ProjectionTransform(CGAffineTransform(a: 1, b: 0, c: 1, d: 1, tx: 0, ty: 0)))
+                    .offset(x: 0, y: geo.size.height)
+            }, alignment: .center)
+            .overlay(
+            GeometryReader { geo in
+                texture
+                    .brightness(-0.1)
+                    .scaleEffect(x: geo.size.width * geo.size.width, y: 1.0, anchor: .trailing)
+                    .frame(width: depth, alignment: .leading)
+                    .clipped()
+                    .rotation3DEffect(
+                    Angle(degrees: 180),
+                    axis: (x: 0.0, y: 1.0, z: 0.0),
+                    anchor: .leading,
+                    anchorZ: 0.0,
+                    perspective: 1.0
+                )
+                    .projectionEffect(ProjectionTransform(CGAffineTransform(a: 1, b: 1, c: 0, d: 1, tx: 0, ty: 0)))
+                    .offset(x: geo.size.width + depth, y: 0 + depth)
+            }, alignment: .center)
+    }
+}
+
 struct TutorialsExample_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialsExample(name: "DropdownPicker")
+        TutorialsExample(name: "IsometricView")
     }
 }

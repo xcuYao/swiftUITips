@@ -14,7 +14,9 @@ struct DataFlowSection: View {
     // @EnvironmentObject @Environment
     // @Binding
     // @GestureState
-
+    
+    // @propertyWrapper
+    
     @State private var select = 0
 
     let dataFlows = ["@State", "@Published", "@ObservedObject", "@StateObject", "@EnvironmentObject", "@Environment", "@Binding", "@GestureState"]
