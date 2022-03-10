@@ -17,6 +17,8 @@ struct TutorialsExample: View {
             DropdownPickerExample()
         case "IsometricView":
             IsometricViewExample()
+        case "Shadows&&Glows":
+            ShadowsAndGlowsExample()
         default:
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         }
@@ -220,8 +222,60 @@ struct ExtrudeModifier<Texture: View>: ViewModifier {
     }
 }
 
+extension View {
+    func multicolorGlow() -> some View {
+        ForEach(0..<2) { i in
+            Rectangle()
+                .fill(AngularGradient(gradient: Gradient(colors: [.red, .green, .blue, .yellow, Color(hex: "#ff3300"), .red]), center: .center))
+                .frame(width: 400, height: 400)
+                .mask(self.blur(radius: 20))
+                .overlay(self.blur(radius: 5 - CGFloat(i * 5)))
+        }
+    }
+
+    func innerShadow<S: Shape>(using shape: S, angel: Angle = .degrees(0), color: Color = .black, width: CGFloat = 6, blur: CGFloat = 6) -> some View {
+        let finalX = CGFloat(cos(angel.radians - .pi / 2))
+        let finalY = CGFloat(sin(angel.radians - .pi / 2))
+
+        return self
+            .overlay(
+            shape
+                .stroke(color, lineWidth: width)
+                .offset(x: finalX * width * 0.6, y: finalY * width * 0.6)
+                .blur(radius: blur)
+                .mask(shape)
+        )
+    }
+}
+
+struct ShadowsAndGlowsExample: View {
+    var body: some View {
+            ScrollView(.vertical) {
+                ZStack {
+                    Text("Hello SwiftUI")
+                        .font(.system(size: 96, weight: .black, design: .rounded))
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.center)
+                        .frame(width: 400, height: 400)
+                        .multicolorGlow()
+                }
+//                .frame(width: 400, height: 400)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black)
+                HStack {
+                    Circle()
+                        .fill(Color.green)
+                        .frame(width: 300, height: 300)
+                        .innerShadow(using: Circle())
+                }.frame(maxWidth: .infinity)
+                    .background(Color.white)
+            }
+            .edgesIgnoringSafeArea(.all)
+    }
+}
+
 struct TutorialsExample_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialsExample(name: "IsometricView")
+        TutorialsExample(name: "Shadows&&Glows")
     }
 }

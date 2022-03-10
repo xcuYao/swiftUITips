@@ -16,7 +16,7 @@ struct ThirdPartLibSection: View {
 
     let thirdPartLibs = ["WrappingHStack", "SheetKit", "WaterfallGrid", "SkeletonUI", "BottomBar", "SPAlert"]
     
-    let tutorials = ["DropdownPicker", "IsometricView"]
+    let tutorials = ["DropdownPicker", "IsometricView", "Shadows&&Glows"]
     
     var body: some View {
         List() {
